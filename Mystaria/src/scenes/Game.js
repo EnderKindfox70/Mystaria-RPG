@@ -24,28 +24,34 @@ export class Game extends Scene
 
         const groundLayer = map.createLayer('floor', tileset, offsetX, offsetY);
         const collisionLayer = map.createLayer('wall', tileset, offsetX, offsetY);
+        const decorationLayer = map.createLayer('decoration', tileset, offsetX, offsetY);
+        decorationLayer.setDepth(2); // Mettre la couche de décoration au-dessus des autres
 
-        collisionLayer.setCollisionByProperty({ collision: true });
+        collisionLayer.setCollisionByExclusion([-1]); // Exclut les tuiles vides de la collision
+        console.log('Collision Layer:', collisionLayer.layer.properties);
 
         this.player = new Player(this, (map.widthInPixels / 2), (map.heightInPixels / 2), 'player');
+        this.player.setDepth(1);
         
         this.physics.world.bounds.setTo(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
         this.player.setCollideWorldBounds(true);
+        this.player.setScale(0.5);
         this.physics.add.collider(this.player, collisionLayer);
+
 
         this.cameras.main.setBounds(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
+        this.cameras.main.setZoom(3);
         this.cameras.main.roundPixels = true;
 
-        // Debug visuel des collisions
-        if (this.physics.config.debug) {
-            const debugGraphics = this.add.graphics().setAlpha(0.75);
-            collisionLayer.renderDebug(debugGraphics, {
-                tileColor: null,
-                collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-                faceColor: new Phaser.Display.Color(40, 39, 37, 255)
-            });
-        }
+
+        
+        // Afficher les propriétés de collision dans la console
+        collisionLayer.forEachTile(tile => {
+            if (tile.properties.collision) {
+                console.log(`Tile at ${tile.x},${tile.y} has collision`);
+            }
+        });
     }
 
     update (time, delta)
