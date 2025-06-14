@@ -1,4 +1,5 @@
 import { Scene } from 'phaser';
+import { SaveSystem } from '../utils/SaveSystem';
 
 export class MainMenu extends Scene
 {
@@ -7,7 +8,7 @@ export class MainMenu extends Scene
         super('MainMenu');
     }
 
-    create ()
+    async create ()
     {
         this.scale.startFullscreen();
 
@@ -25,7 +26,7 @@ export class MainMenu extends Scene
         }).setOrigin(0.5).setInteractive({useHandCursor: true});
     
         playButton.on('pointerdown', () => {
-            this.scene.start('Game');
+            this.scene.start('CharacterCreationMenu');
         });
         playButton.on('pointerout', () => 
         {
@@ -62,8 +63,47 @@ export class MainMenu extends Scene
         optionsButton.on('pointerover', () => {
             optionsButton.setStyle({ fill: '#ff0' });
         });
+        try 
+        {
+            const saves = await SaveSystem.getAllSaves();
+            console.log('Available saves:', saves);
 
+            if (saves && saves.length > 0) 
+            {
+                const loadButton = this.add.text(512, 560, 'Charger Partie', {
+                    fontFamily: 'Arial Black', 
+                    fontSize: 24, 
+                    color: '#ffffff',
+                    stroke: '#000000', 
+                    strokeThickness: 4,
+                    align: 'center'
+                }).setOrigin(0.5)
+                  .setInteractive({useHandCursor: true})
+                  .on('pointerdown', async () => {
+                    try 
+                    {
+                        this.scene.launch('LoadSaveMenu');
+                        this.scene.pause('MainMenu');
+                    } 
+                    catch (error) 
+                    {
+                        console.error('Failed to load game:', error);
+                    }
+                });
 
+                loadButton.on('pointerout', () => {
+                    loadButton.setStyle({ fill: '#ffffff' });
+                });
+                loadButton.on('pointerover', () => {
+                    loadButton.setStyle({ fill: '#ff0' });
+                });
 
+                optionsButton.setY(600);
+            }
+        } 
+        catch (error) 
+        {
+            console.error('Failed to check saves:', error);
+        }
     }
 }

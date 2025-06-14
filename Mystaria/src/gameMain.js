@@ -5,6 +5,7 @@ import { MainMenu } from './scenes/MainMenu';
 import { Preloader } from './scenes/Preloader';
 import { CharacterCreationMenu } from './ui/CharacterCreationMenu';
 import { AUTO, Game, Physics } from 'phaser';
+import { LoadSaveMenu } from './ui/loadSaveMenu';
 
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
@@ -24,7 +25,8 @@ const config = {
         MainMenu,
         MainGame,
         GameOver,
-        CharacterCreationMenu
+        CharacterCreationMenu,
+        LoadSaveMenu
     ],
     physics: {
         default: 'arcade',

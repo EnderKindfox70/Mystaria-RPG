@@ -7,16 +7,15 @@ export class Game extends Scene
         super('Game');
     }
 
-    preload ()
+    preload()
     {
         this.load.image('player', '../src/assets/sprites/player.png');
         this.load.tilemapTiledJSON('tilemap', '../src/maps/tilemap.json');
         this.load.image('tileset', '../src/assets/tileset/tileset.png');
     }
 
-    create ()
+    create()
     {
-        // Créer la carte
         const map = this.make.tilemap({ key: 'tilemap' });
         const tileset = map.addTilesetImage('test', 'tileset', 16, 16, 0, 0);
 
