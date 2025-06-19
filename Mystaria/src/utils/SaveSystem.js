@@ -30,7 +30,28 @@ export class SaveSystem {
             };
         });
     }
+    static async deleteSave(saveId) {
+        try {
+            const db = await this.initialize();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([this.storeName], 'readwrite');
+                const store = transaction.objectStore(this.storeName);
+                const request = store.delete(saveId);
 
+                request.onsuccess = () => {
+                    console.log(`Save with id ${saveId} deleted successfully`);
+                    resolve(true);
+                };
+                request.onerror = () => {
+                    console.error(`Failed to delete save with id ${saveId}:`, request.error);
+                    reject(request.error);
+                };
+            });
+        } catch (error) {
+            console.error('Delete failed:', error);
+            throw error;
+        }
+    }
     static async saveGame(saveData) 
     {
         try 

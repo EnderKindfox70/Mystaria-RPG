@@ -44,6 +44,46 @@ export class LoadSaveMenu extends Scene
                     console.error('Failed to load game:', error);
                 }
             });
+            
+            this.add.text(700, 350 + (index * 40), "suppr",
+            {
+                fontFamily: 'Arial',
+                fontSize: 24,
+                color: '#ff0000',
+                stroke: '#000000',
+                strokeThickness: 2
+            })
+            .setOrigin(0.5).setInteractive({ useHandCursor: true })
+            .on('pointerdown', async () => {
+                try 
+                {
+                    await SaveSystem.deleteSave(saveFile.id);
+                    console.log(`Save ${saveFile.id} deleted`);
+                    
+                    // Vérifier s'il reste des sauvegardes
+                    const remainingSaves = await SaveSystem.getAllSaves();
+                    if (remainingSaves.length === 0) 
+                    {
+                        // Cacher le bouton dans le menu principal
+                        const mainMenu = this.scene.get('MainMenu');
+                        if (mainMenu.loadButton) 
+                        {
+                            mainMenu.loadButton.setVisible(false);
+                        }
+                        // Fermer le menu de chargement
+                        this.scene.stop();
+                        this.scene.stop('MainMenu');
+                        this.scene.start('MainMenu');
+                    } else 
+                    {
+                        this.scene.restart();
+                    }
+                } 
+                catch (error) 
+                {
+                    console.error('Failed to delete save:', error);
+                }
+            });
         });
 
         // Bouton fermer

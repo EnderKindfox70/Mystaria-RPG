@@ -6,6 +6,8 @@ import { Preloader } from './scenes/Preloader';
 import { CharacterCreationMenu } from './ui/CharacterCreationMenu';
 import { AUTO, Game, Physics } from 'phaser';
 import { LoadSaveMenu } from './ui/loadSaveMenu';
+import { PauseMenu } from './ui/pauseMenu';
+import { InputManager } from './utils/inputManager';
 
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
@@ -15,7 +17,8 @@ const config = {
     height: 768,
     parent: 'game-container',
     pixelArt: true,
-    scale: {
+    scale: 
+    {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
@@ -23,16 +26,20 @@ const config = {
         Boot,
         Preloader,
         MainMenu,
+        PauseMenu,
         MainGame,
         GameOver,
         CharacterCreationMenu,
-        LoadSaveMenu
+        LoadSaveMenu,
+        InputManager
+
     ],
     physics: {
         default: 'arcade',
-        arcade: {
+        arcade: 
+        {
             gravity: { y: 0 },
-            debug: true // Pour voir les collisions
+            debug: false
         }
     },
 };

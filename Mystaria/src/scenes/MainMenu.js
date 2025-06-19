@@ -5,12 +5,11 @@ export class MainMenu extends Scene
 {
     constructor ()
     {
-        super('MainMenu');
+        super({ key: 'MainMenu', active: true });
     }
 
     async create ()
     {
-        this.scale.startFullscreen();
 
         this.add.image(512, 384, 'background');
         this.add.text(512, 300, 'MYSTARIA RPG', {
@@ -96,14 +95,45 @@ export class MainMenu extends Scene
                 });
                 loadButton.on('pointerover', () => {
                     loadButton.setStyle({ fill: '#ff0' });
+
                 });
 
                 optionsButton.setY(600);
+
             }
         } 
         catch (error) 
         {
             console.error('Failed to check saves:', error);
         }
+
+        const saves = await SaveSystem.getAllSaves();
+        
+        // Créer le bouton avec l'apparence existante
+        this.loadButton = this.add.text(
+            512, 560, 'Charger Partie', {
+                fontFamily: 'Arial Black', 
+                fontSize: 24, 
+                color: '#ffffff',
+                stroke: '#000000', 
+                strokeThickness: 4,
+                align: 'center'
+            }).setOrigin(0.5)
+              .setInteractive({useHandCursor: true})
+              .on('pointerdown', async () => 
+            {
+                try 
+                {
+                    this.scene.launch('LoadSaveMenu');
+                    this.scene.pause('MainMenu');
+                } 
+                catch (error) 
+                {
+                    console.error('Failed to load game:', error);
+                }
+            });
+
+        // Ajouter uniquement cette ligne pour gérer la visibilité
+        this.loadButton.setVisible(saves.length > 0);
     }
 }

@@ -63,6 +63,18 @@
     ],
     "soul_magic":
     [
-
+        {
+            "id":1,
+            "name": "soul mask"
+        },
+        {
+            "id":2,
+            "name": "soul weapon"
+        },
+        {
+            "id":3,
+            "name": "soul armor"
+        }
+        
     ]
 }

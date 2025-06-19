@@ -28,7 +28,7 @@ export default class Player extends Entity {
             s: scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
             d: scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
             shift: scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT),
-            space: scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+            space: scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
         };
     }
 
@@ -71,5 +71,6 @@ export default class Player extends Entity {
         }
 
         this.body.velocity.normalize().scale(this.speed);
+
     }
 }
