@@ -2,7 +2,8 @@ import { Scene } from "phaser";
 import { SaveSystem } from '../utils/SaveSystem';
 
 export class CharacterCreationMenu extends Scene {
-    constructor() {
+    constructor() 
+    {
         super('CharacterCreationMenu');
     }
 
@@ -20,9 +21,9 @@ export class CharacterCreationMenu extends Scene {
             .setInteractive({ useHandCursor: true })
             .on('pointerdown', async () => {
                 try {
-                    // Sauvegarde et récupération de l'ID
                     const saveId = await SaveSystem.saveGame({
-                        character: {
+                        character: 
+                        {
                             name: 'Hero',
                             level: 1,
                             position: {x:100, y: 100, scene: 'Game'},

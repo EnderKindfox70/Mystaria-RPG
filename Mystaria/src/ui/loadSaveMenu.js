@@ -37,7 +37,11 @@ export class LoadSaveMenu extends Scene
                     const saveData = await SaveSystem.loadGame(saveFile.id);
                     console.log('Loaded save:', saveData);
                     this.scene.stop('MainMenu');
-                    this.scene.start('Game', { saveData });
+                    this.cameras.main.fadeOut(500, 0, 0, 0);
+
+                    this.scene.start(saveData.character.position.scene, { saveData });
+                    let new_scene = this.scene.get(saveData.character.position.scene);
+                    new_scene.currentSaveId = saveData.id;
                 } 
                 catch (error) 
                 {
@@ -60,21 +64,19 @@ export class LoadSaveMenu extends Scene
                     await SaveSystem.deleteSave(saveFile.id);
                     console.log(`Save ${saveFile.id} deleted`);
                     
-                    // Vérifier s'il reste des sauvegardes
                     const remainingSaves = await SaveSystem.getAllSaves();
                     if (remainingSaves.length === 0) 
                     {
-                        // Cacher le bouton dans le menu principal
                         const mainMenu = this.scene.get('MainMenu');
                         if (mainMenu.loadButton) 
                         {
                             mainMenu.loadButton.setVisible(false);
                         }
-                        // Fermer le menu de chargement
                         this.scene.stop();
                         this.scene.stop('MainMenu');
                         this.scene.start('MainMenu');
-                    } else 
+                    } 
+                    else 
                     {
                         this.scene.restart();
                     }

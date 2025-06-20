@@ -1,6 +1,7 @@
-import { Scene } from 'phaser';
+import { BaseGameScene } from './BaseGameScene.js';
 import Player from '../entities/Player.js';
-export class Game extends Scene
+
+export class Game extends BaseGameScene
 {
     constructor ()
     {
@@ -9,6 +10,7 @@ export class Game extends Scene
 
     preload()
     {
+        super.preload();
         this.load.image('player', '../src/assets/sprites/player.png');
         this.load.tilemapTiledJSON('tilemap', '../src/maps/tilemap.json');
         this.load.image('tileset', '../src/assets/tileset/tileset.png');
@@ -16,6 +18,7 @@ export class Game extends Scene
 
     create()
     {
+        super.create(); // Appelle la logique de la classe mère (chargement map, player, saveData...)
         const map = this.make.tilemap({ key: 'tilemap' });
         const tileset = map.addTilesetImage('test', 'tileset', 16, 16, 0, 0);
 
@@ -28,21 +31,18 @@ export class Game extends Scene
         decorationLayer.setDepth(2); // Mettre la couche de décoration au-dessus des autres
 
         collisionLayer.setCollisionByExclusion([-1]); // Exclut les tuiles vides de la collision
-        console.log('Collision Layer:', collisionLayer.layer.properties);
 
-        this.player = new Player(this, (map.widthInPixels / 2), (map.heightInPixels / 2), 'player');
-        this.player.setDepth(1);
-        
-        this.physics.world.bounds.setTo(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
-        this.player.setCollideWorldBounds(true);
-        this.player.setScale(0.5);
-        this.physics.add.collider(this.player, collisionLayer);
 
 
         this.cameras.main.setBounds(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
-        this.cameras.main.startFollow(this.player);
-        this.cameras.main.setZoom(3);
-        this.cameras.main.roundPixels = true;
+
+        this.physics.world.bounds.setTo(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
+        this.player.setCollideWorldBounds(true);
+        this.physics.add.collider(this.player, collisionLayer);
+
+
+
+
 
 
         
@@ -52,12 +52,20 @@ export class Game extends Scene
                 console.log(`Tile at ${tile.x},${tile.y} has collision`);
             }
         });
+
+        console.log(this.scene.get('Game').player);
     }
 
     update (time, delta)
     {
-        this.player.update();
+        super.update(time, delta);
+        // ...ajoute ici du code spécifique à la scène Game si besoin...
     }
 
-    
+    // Si tu veux restaurer des propriétés spécifiques à Game, surcharge loadFromSave
+    async loadFromSave(saveData) 
+    {
+        await super.loadFromSave(saveData);
+        // ...restaure ici d'autres propriétés spécifiques à Game si besoin...
+    }
 }

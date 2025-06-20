@@ -61,16 +61,17 @@ export class SaveSystem {
                 const transaction = db.transaction([this.storeName], 'readwrite');
                 const store = transaction.objectStore(this.storeName);
 
+                // Si saveData contient un id, on l'utilise pour écraser la sauvegarde existante
                 const save = {
-                    id: `save_${Date.now()}`, 
+                    id: saveData.id || `save_${Date.now()}`,
                     ...saveData,
-                    created: Date.now(),
+                    created: saveData.created || Date.now(),
                     lastModified: Date.now()
                 };
 
                 const request = store.put(save);
                 request.onsuccess = () => {
-                    console.log('New save created:', save.id);
+                    console.log('Save created or updated:', save.id);
                     resolve(save.id);
                 };
                 request.onerror = () => reject(request.error);

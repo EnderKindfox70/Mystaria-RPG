@@ -1,20 +1,22 @@
 import Entity from "./Entity";
 
-export default class Player extends Entity {
+export default class Player extends Entity 
+{
     constructor(scene, x, y, texture = 'player', frame) 
     {
         super(scene, x, y, texture, frame);
 
         this.setOrigin(0.5, 0.5);
-        this.setScale(1.0);
-        this.setDepth(10);
+        this.setScale(0.5);
+        this.setDepth(1);
+
 
         this.body.setSize(16, 24);
         this.body.setOffset(5, 0);
 
         this.sneakSpeed = 50;
-        this.walkSpeed = 150;
-        this.runSpeed = 300; 
+        this.walkSpeed = 75;
+        this.runSpeed = 100; 
         this.speed = this.walkSpeed;
 
         this.cursors = scene.input.keyboard.createCursorKeys(); 

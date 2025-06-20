@@ -1,4 +1,6 @@
 import { Scene } from "phaser";
+import { SaveSystem } from "../utils/SaveSystem";
+import Player from "../entities/Player";
 
 export class PauseMenu extends Scene 
 {
@@ -39,11 +41,28 @@ export class PauseMenu extends Scene
         })
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
-        .on('pointerdown', () => 
+        .on('pointerdown', async () => 
         {
+            const allScenes = this.scene.manager.getScenes(false); 
+            const gameScene = allScenes.find(scene => scene.player);
+            if (!gameScene || !gameScene.player) {
+                console.warn('Aucune scène de jeu active trouvée pour la sauvegarde.');
+                return;
+            }
+            
+            const player = gameScene.player;
+            const saveId = gameScene.currentSaveId || null;
+            const saveData = {
+                id: saveId,
+                character: {
+                    name: player.name || 'Hero',
+                    level: player.level || 1,
+                    position: { x: player.x, y: player.y, scene: gameScene.scene.key },
+                }
+            };
+            await SaveSystem.saveGame(saveData);
             this.scene.stop('pauseMenu');
-            this.scene.stop('Game'); 
-            this.scene.start('MainMenu'); 
+            this.scene.resume(gameScene.scene.key);
         })
         .on('pointerover', () => SaveButton.setStyle({ backgroundColor: '#6666aa' }))
         .on('pointerout', () => SaveButton.setStyle({ backgroundColor: '#444488' }));

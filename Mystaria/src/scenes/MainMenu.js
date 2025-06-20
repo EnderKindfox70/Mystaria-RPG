@@ -69,7 +69,7 @@ export class MainMenu extends Scene
 
             if (saves && saves.length > 0) 
             {
-                const loadButton = this.add.text(512, 560, 'Charger Partie', {
+                this.loadButton = this.add.text(512, 560, 'Charger Partie', {
                     fontFamily: 'Arial Black', 
                     fontSize: 24, 
                     color: '#ffffff',
@@ -78,6 +78,26 @@ export class MainMenu extends Scene
                     align: 'center'
                 }).setOrigin(0.5)
                   .setInteractive({useHandCursor: true})
+                  .on('pointerover', () => 
+                    {
+                    this.loadButton.setStyle({ fill: '#ff0' });
+                    this.tweens.add(
+                        {
+                            targets: this.loadButton,
+                            duration: 500,
+                            ease: 'Sine.easeInOut',
+                            scale: 1.1
+                        });
+                    })
+                  .on('pointerout', () => {
+                    this.loadButton.setStyle({ fill: '#ffffff' });
+                    this.tweens.add({
+                        targets: this.loadButton,
+                        duration: 500,
+                        ease: 'Sine.easeInOut',
+                        scale: 1
+                    });
+                  })
                   .on('pointerdown', async () => {
                     try 
                     {
@@ -90,50 +110,12 @@ export class MainMenu extends Scene
                     }
                 });
 
-                loadButton.on('pointerout', () => {
-                    loadButton.setStyle({ fill: '#ffffff' });
-                });
-                loadButton.on('pointerover', () => {
-                    loadButton.setStyle({ fill: '#ff0' });
-
-                });
-
                 optionsButton.setY(600);
-
             }
         } 
         catch (error) 
         {
             console.error('Failed to check saves:', error);
         }
-
-        const saves = await SaveSystem.getAllSaves();
-        
-        // Créer le bouton avec l'apparence existante
-        this.loadButton = this.add.text(
-            512, 560, 'Charger Partie', {
-                fontFamily: 'Arial Black', 
-                fontSize: 24, 
-                color: '#ffffff',
-                stroke: '#000000', 
-                strokeThickness: 4,
-                align: 'center'
-            }).setOrigin(0.5)
-              .setInteractive({useHandCursor: true})
-              .on('pointerdown', async () => 
-            {
-                try 
-                {
-                    this.scene.launch('LoadSaveMenu');
-                    this.scene.pause('MainMenu');
-                } 
-                catch (error) 
-                {
-                    console.error('Failed to load game:', error);
-                }
-            });
-
-        // Ajouter uniquement cette ligne pour gérer la visibilité
-        this.loadButton.setVisible(saves.length > 0);
     }
 }
