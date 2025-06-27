@@ -1,0 +1,201 @@
+[
+    {
+        "id":1,
+        "name":"Warrior",
+        "accuracy": 8,
+        "favored_weapon": [1,5,6,8,11,12],
+        "favored_armor":[2,3],
+        "stats": 
+        [
+            {"hp": 13,"phy_atk":10,"mag_atk":0,"mana":5, "speed":7},
+            {"hp": 17,"phy_atk":12,"mag_atk":2,"mana":6, "speed":8},
+            {"hp": 20,"phy_atk":14,"mag_atk":2,"mana":9, "speed":10},
+            {"hp": 26,"phy_atk":16,"mag_atk":4,"mana":9, "speed":10},
+            {"hp": 30,"phy_atk":18,"mag_atk":7,"mana":13, "speed":12},
+            {"hp": 36,"phy_atk":20,"mag_atk":7,"mana":13, "speed":14},
+            {"hp": 40,"phy_atk":22,"mag_atk":8,"mana":15, "speed":15},
+            {"hp": 45,"phy_atk":25,"mag_atk":8,"mana":15, "speed":17},
+            {"hp": 48,"phy_atk":29,"mag_atk":9,"mana":16, "speed":18},
+            {"hp": 54,"phy_atk":33,"mag_atk":11,"mana":18, "speed":19},
+            {"hp": 60,"phy_atk":35,"mag_atk":11,"mana":19, "speed":20},
+            {"hp": 63,"phy_atk":38,"mag_atk":13,"mana":19, "speed":22},
+            {"hp": 67,"phy_atk":40,"mag_atk":13,"mana":22, "speed":23},
+            {"hp": 70,"phy_atk":42,"mag_atk":15,"mana":23, "speed":25},
+            {"hp": 76,"phy_atk":47,"mag_atk":16,"mana":25, "speed":26},
+            {"hp": 80,"phy_atk":50,"mag_atk":17,"mana":26, "speed":27},
+            {"hp": 83,"phy_atk":53,"mag_atk":18,"mana":27, "speed":29},
+            {"hp": 90,"phy_atk":55,"mag_atk":18,"mana":27, "speed":30},
+            {"hp": 96,"phy_atk":57,"mag_atk":18,"mana":28, "speed":31},
+            {"hp": 100,"phy_atk":65,"mag_atk":18,"mana":30, "speed":32}
+        ],
+        "start_skill":2,
+        "start_spell":1,
+        "skills":[1,2,10,6,15,13,14,11],
+        "sub_class":[],
+        "starting_kit":[
+            {"id":1, "name":"the sword and shield", "items":[{"id":1, "quantity":1, "equipped": true},{"id":11, "quantity":3, "equipped":false}]},
+            {"id":2,"name": "blunt damage", "items":[{"id":6, "quantity":1, "equipped": true},{"id":11, "quantity":3, "equipped":false}]},
+            {"id":3,"name": "heavy damage", "items":[{"id":10, "quantity":1, "equipped": true},{"id":11, "quantity":2, "equipped":false}]}
+        ]
+    },
+    {
+        "id":2,
+        "name": "Ranger",
+        "accuracy": 8,
+        "favored_weapon": [2,3,4,9,10],
+        "favored_armor":[1,2],
+        "stats": 
+        [
+            {"hp": 10,"phy_atk":6,"mag_atk":4,"mana":4, "speed":11},
+            {"hp": 12,"phy_atk":8,"mag_atk":5,"mana":5, "speed":15},
+            {"hp": 15,"phy_atk":10,"mag_atk":10,"mana":5, "speed":15},
+            {"hp": 17,"phy_atk":12,"mag_atk":17,"mana":7, "speed":17},
+            {"hp": 20,"phy_atk":15,"mag_atk":20,"mana":10, "speed":20},
+            {"hp": 22,"phy_atk":17,"mag_atk":22,"mana":12, "speed":22},
+            {"hp": 24,"phy_atk":19,"mag_atk":24,"mana":12, "speed":24},
+            {"hp": 26,"phy_atk":20,"mag_atk":24,"mana":15, "speed":26},
+            {"hp": 28,"phy_atk":22,"mag_atk":26,"mana":17, "speed":28},
+            {"hp": 30,"phy_atk":26,"mag_atk":26,"mana":22, "speed":30},
+            {"hp": 32,"phy_atk":28,"mag_atk":28,"mana":24, "speed":32},
+            {"hp": 34,"phy_atk":30,"mag_atk":30,"mana":26, "speed":34},
+            {"hp": 36,"phy_atk":32,"mag_atk":32,"mana":28, "speed":36},
+            {"hp": 38,"phy_atk":34,"mag_atk":34,"mana":30, "speed":38},
+            {"hp": 41,"phy_atk":37,"mag_atk":37,"mana":33, "speed":41},
+            {"hp": 43,"phy_atk":39,"mag_atk":39,"mana":35, "speed":43},
+            {"hp": 45,"phy_atk":41,"mag_atk":41,"mana":37, "speed":45},
+            {"hp": 47,"phy_atk":43,"mag_atk":43,"mana":39, "speed":47},
+            {"hp": 49,"phy_atk":45,"mag_atk":45,"mana":41, "speed":49},
+            {"hp": 52,"phy_atk":48,"mag_atk":48,"mana":44, "speed":52}
+        ],
+        "start_skill":3,
+        "start_spell":2,
+        "skills":[1,3,10,11,8,13,14],
+        "starting_kit":[
+            {"id":1,"name": "hunter archer", "items":[{"id":4, "quantity":1, "equipped": true},{"id":11, "quantity":4, "equipped":false}]},
+            {"id":2,"name": "crossbowman", "items":[{"id":7, "quantity":1, "equipped": true},{"id":11, "quantity":4, "equipped":false}]},
+            {"id":3, "name": "light bow", "items":[{"id":8, "quantity":1, "equipped": true},{"id":11, "quantity":4, "equipped":false}]}
+        ],
+        "sub_class":[
+            {"id":1, "name": "Hunter"},
+            {"id":2, "name":"Beastmaster"},
+            {"id":3, "name":"Shadow Tracker"}
+        ]
+    },
+    {
+        "id":3,
+        "name": "Mage",
+        "accuracy": 12,
+        "favored_weapon": [13],
+        "favored_armor":[1],
+        "stats": 
+        [
+            {"hp": 7,"phy_atk":2,"mag_atk":12,"mana":10, "speed":4},
+            {"hp": 9,"phy_atk":4,"mag_atk":16,"mana":10, "speed":6},
+            {"hp": 12,"phy_atk":4,"mag_atk":19,"mana":14, "speed":6},
+            {"hp": 13,"phy_atk":4,"mag_atk":25,"mana":15, "speed":8},
+            {"hp": 15,"phy_atk":5,"mag_atk":33,"mana":19, "speed":8},
+            {"hp": 18,"phy_atk":5,"mag_atk":36,"mana":21, "speed":10},
+            {"hp": 19,"phy_atk":5,"mag_atk":40,"mana":24, "speed":12},
+            {"hp": 22,"phy_atk":5,"mag_atk":42,"mana":29, "speed":12},
+            {"hp": 24,"phy_atk":6,"mag_atk":44,"mana":33, "speed":13},
+            {"hp": 26,"phy_atk":8,"mag_atk":49,"mana":38, "speed":14},
+            {"hp": 28,"phy_atk":8,"mag_atk":53,"mana":42, "speed":14},
+            {"hp": 30,"phy_atk":9,"mag_atk":56,"mana":45, "speed":15},
+            {"hp": 31,"phy_atk":9,"mag_atk":60,"mana":50, "speed":15},
+            {"hp": 31,"phy_atk":11,"mag_atk":64,"mana":52, "speed":16},
+            {"hp": 33,"phy_atk":11,"mag_atk":68,"mana":55, "speed":17},
+            {"hp": 35,"phy_atk":13,"mag_atk":73,"mana":60, "speed":18},
+            {"hp": 36,"phy_atk":13,"mag_atk":77,"mana":64, "speed":19},
+            {"hp": 37,"phy_atk":13,"mag_atk":82,"mana":68, "speed":19},
+            {"hp": 37,"phy_atk":13,"mag_atk":87,"mana":73, "speed":19},
+            {"hp": 39,"phy_atk":13,"mag_atk":97,"mana":72, "speed":20}
+        ],
+        "start_skill":2,
+        "start_spell":2,
+        "skills":[5,6,11,7,12,9],
+        "sub_class":[],
+        "starting_kit":[
+            {"id":1,"name": "impoverished mage", "items":[{"id":11, "quantity":3, "equipped":false},{"id":12, "quantity":5, "equipped":false}]}
+        ]
+    },
+    {
+        "id":4,
+        "name": "Pugilist",
+        "accuracy": 10,
+        "favored_weapon": [0],
+        "favored_armor":[1],
+        "stats": 
+        [
+            {"hp": 12,"phy_atk":13,"mag_atk":0,"mana":0, "speed":10},
+            {"hp": 17,"phy_atk":14,"mag_atk":0,"mana":0, "speed":14},
+            {"hp": 20,"phy_atk":16,"mag_atk":2,"mana":2, "speed":15},
+            {"hp": 22,"phy_atk":20,"mag_atk":3,"mana":3, "speed":17},
+            {"hp": 24,"phy_atk":28,"mag_atk":3,"mana":3, "speed":22},
+            {"hp": 28,"phy_atk":31,"mag_atk":3,"mana":3, "speed":25},
+            {"hp": 30,"phy_atk":35,"mag_atk":3,"mana":3, "speed":29},
+            {"hp": 32,"phy_atk":40,"mag_atk":3,"mana":4, "speed":31},
+            {"hp": 34,"phy_atk":43,"mag_atk":4,"mana":4, "speed":35},
+            {"hp": 38,"phy_atk":52,"mag_atk":4,"mana":4, "speed":36},
+            {"hp": 39,"phy_atk":56,"mag_atk":7,"mana":4, "speed":39},
+            {"hp": 41,"phy_atk":59,"mag_atk":7,"mana":5, "speed":43},
+            {"hp": 45,"phy_atk":63,"mag_atk":7,"mana":5, "speed":45},
+            {"hp": 47,"phy_atk":69,"mag_atk":7,"mana":5, "speed":47},
+            {"hp": 53,"phy_atk":74,"mag_atk":7,"mana":5, "speed":51},
+            {"hp": 56,"phy_atk":78,"mag_atk":8,"mana":6, "speed":52},
+            {"hp": 59,"phy_atk":80,"mag_atk":8,"mana":6, "speed":57},
+            {"hp": 62,"phy_atk":84,"mag_atk":8,"mana":6, "speed":60},
+            {"hp": 64,"phy_atk":90,"mag_atk":8,"mana":8, "speed":60},
+            {"hp": 66,"phy_atk":100,"mag_atk":8,"mana":8, "speed":63}
+        ],
+        "start_skill":2,
+        "start_spell":1,
+        "skills":[1,2,3,15,11,6],
+        "sub_class":[],
+        "starting_kit":[
+            {"id":1,"name":"monk", "items":[{"id":11, "quantity":5, "equipped":false},{"id":12, "quantity":2, "equipped":false}]}
+        ]
+    },
+    {
+        "id":5,
+        "name": "Rogue",
+        "accuracy": 8,
+        "favored_weapon": [2,4,7,10],
+        "favored_armor":[1,2],
+        "stats": 
+        [
+            {"hp": 7,"phy_atk":8,"mag_atk":2,"mana":3, "speed":15},
+            {"hp": 10,"phy_atk":11,"mag_atk":5,"mana":3, "speed":16},
+            {"hp": 12,"phy_atk":13,"mag_atk":6,"mana":4, "speed":20},
+            {"hp": 13,"phy_atk":15,"mag_atk":9,"mana":5, "speed":23},
+            {"hp": 15,"phy_atk":18,"mag_atk":12,"mana":7, "speed":28},
+            {"hp": 16,"phy_atk":20,"mag_atk":15,"mana":8, "speed":31},
+            {"hp": 17,"phy_atk":21,"mag_atk":17,"mana":10, "speed":35},
+            {"hp": 18,"phy_atk":23,"mag_atk":19,"mana":12, "speed":38},
+            {"hp": 19,"phy_atk":25,"mag_atk":21,"mana":14, "speed":41},
+            {"hp": 21,"phy_atk":27,"mag_atk":27,"mana":16, "speed":45},
+            {"hp": 23,"phy_atk":29,"mag_atk":29,"mana":17, "speed":48},
+            {"hp": 24,"phy_atk":31,"mag_atk":31,"mana":19, "speed":50},
+            {"hp": 25,"phy_atk":31,"mag_atk":35,"mana":20, "speed":54},
+            {"hp": 26,"phy_atk":33,"mag_atk":37,"mana":21, "speed":58},
+            {"hp": 27,"phy_atk":35,"mag_atk":40,"mana":23, "speed":65},
+            {"hp": 30,"phy_atk":37,"mag_atk":40,"mana":23, "speed":70},
+            {"hp": 30,"phy_atk":40,"mag_atk":40,"mana":25, "speed":75},
+            {"hp": 31,"phy_atk":42,"mag_atk":43,"mana":26, "speed":78},
+            {"hp": 32,"phy_atk":45,"mag_atk":45,"mana":28, "speed":80},
+            {"hp": 32,"phy_atk":47,"mag_atk":47,"mana":29, "speed":90}
+        ],
+        "start_skill":4,
+        "start_spell":2,
+        "skills":[1,2,3,4,15,11,7,13,16,17,18],
+        "sub_class":[
+            {"id":1, "name": "Thief"},
+            {"id":2, "name": "Arcane Trickster"},
+            {"id":3, "name": "Assassin"}
+        ],
+        "starting_kit":[
+            {"id":1,"name": "budding assassin", "items":[{"id":3, "quantity":1, "equipped": true},{"id":12, "quantity":2, "equipped":false},{"id":11, "quantity":1, "equipped":false}]},
+            {"id":2, "name": "novice duelist","items":[{"id":5, "quantity":1, "equipped": true},{"id":12, "quantity":2, "equipped":false},{"id":11, "quantity":2, "equipped":false}]},
+            {"id":3,"name":"medieval sniper", "items":[{"id":7, "quantity":1, "equipped": true},{"id":12, "quantity":2, "equipped":false},{"id":11, "quantity":2, "equipped":false}]}
+        ]
+    }
+]

@@ -1,0 +1,191 @@
+[
+    {
+        "id":1,
+        "name":"Soldier",
+        "gold": 10,
+        "skills":
+        [
+            1,15
+        ],
+        "specialty":
+        [
+
+        ],
+        "ability":
+        [
+            {"id":1, "name":"Military Training", "description": "Your martial training allows you to use reinforcement and emission from the start"}    
+        ],
+        "equipment":
+        [
+        ]
+    },
+    {
+        "id":2,
+        "name": "Noble",
+        "gold": 40,
+        "skills":
+        [
+            6,16
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+    },
+    {
+        "id":3,
+        "name":"Fisherman",
+        "gold": 15,
+        "skills":
+        [
+            8,13
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+    },
+    {
+        "id":4,
+        "name": "Hunter",
+        "gold": 15,
+        "skills":
+        [
+            8,3
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+    },
+    {
+        "id":5,
+        "name": "Nomad",
+        "gold": 0,
+        "skills":
+        [
+            14,8
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+    },
+    {
+        "id":6,
+        "name": "Peasant",
+        "gold": -10,
+        "skills":
+        [
+            1,10
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+
+    },
+    {
+        "id":7,
+        "name": "Criminal",
+        "gold": 10,
+        "skills":
+        [
+            3,18
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+    },
+    {
+        "id":8,
+        "name": "Sage",
+        "gold": 25,
+        "skills":
+        [
+            5,6
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Sailor",
+        "gold":20,
+        "skills":
+        [
+            1,13
+        ],
+        "specialty":
+        [
+            
+        ],
+        "ability":
+        [
+            
+        ],
+        "equipment":
+        [
+            
+        ]
+    }
+]

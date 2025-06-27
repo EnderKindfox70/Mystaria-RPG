@@ -1,0 +1,18 @@
+[
+    {
+        "id": 11,
+        "name": "weak healing potion",
+        "type": "potion",
+        "ingredients": [],
+        "success": 5,
+        "effect": "restores 20 HP to the drinker"
+    },
+    {
+        "id": 12,
+        "name": "weak mana potion",
+        "type": "potion",
+        "ingredients": [],
+        "success": 5,
+        "effect": "restores 20 mana to the drinker"
+    }
+]

@@ -1,3 +1,5 @@
+import {FileDataLoader} from '../../utils/fileDataLoader.js';
+
 export default class Magic 
 {
     constructor(id,name)

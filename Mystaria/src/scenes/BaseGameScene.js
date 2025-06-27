@@ -46,6 +46,7 @@ export class BaseGameScene extends Scene
         {
             this.player.x = saveData.character.position.x;
             this.player.y = saveData.character.position.y;
+            this.player.name = saveData.character.name;
         }
     }
 }

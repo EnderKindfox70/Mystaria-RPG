@@ -1,0 +1,42 @@
+[
+    {
+        "id": 14,
+        "name": "chainmail",
+        "type": "armor",
+        "slot": "chest",
+        "armor_category": 2,
+        "armor_material": 4,
+        "physical_defense": 15,
+        "magic_defense": 5
+    },
+    {
+        "id": 15,
+        "name": "chainmail leggings",
+        "type": "armor",
+        "slot": "legs",
+        "armor_category": 2,
+        "armor_material": 4,
+        "physical_defense": 10,
+        "magic_defense": 5
+    },
+    {
+        "id": 16,
+        "name": "reinforced leather boots",
+        "type": "armor",
+        "slot": "feet",
+        "armor_category": 2,
+        "armor_material": 4,
+        "physical_defense": 10,
+        "magic_defense": 5
+    },
+    {
+        "id": 17,
+        "name": "chainmail helm",
+        "type": "armor",
+        "slot": "head",
+        "armor_category": 2,
+        "armor_material": 4,
+        "physical_defense": 10,
+        "magic_defense": 5
+    }
+]

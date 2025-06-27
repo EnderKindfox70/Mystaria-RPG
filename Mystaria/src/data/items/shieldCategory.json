@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "name":"light shield",
+        "scale_attribute": "dexterity",
+        "base_weight": 2,
+        "guard_bonus": 1.5
+    },
+    {
+        "id":2,
+        "name":"medium shield",
+        "scale_attribute": "dexterity",
+        "base_weight": 5,
+        "guard_bonus": 2
+    },
+    {
+        "id":3,
+        "name":"heavy shield",
+        "scale_attribute": "strength",
+        "base_weight": 10,
+        "guard_bonus": 3
+    }
+]

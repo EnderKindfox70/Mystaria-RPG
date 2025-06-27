@@ -1,0 +1,17 @@
+[
+    {
+        "id":1,
+        "name":"light armor",
+        "proficiency_penalty": {"type":"attribute","constitution":-2}
+    },
+    {
+        "id":2,
+        "name":"medium armor",
+        "proficiency_penalty": {"type":"attribute","constitution":-1}
+    },
+    {
+        "id":3,
+        "name": "heavy armor",
+        "proficiency_penalty": {"type":"stat","speed":-20}
+    }
+]

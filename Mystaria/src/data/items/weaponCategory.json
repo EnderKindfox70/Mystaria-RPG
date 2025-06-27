@@ -1,0 +1,119 @@
+[
+    {
+        "id": 1,
+        "name":"longsword",
+        "damage_type":3,
+        "range": 1.5,
+        "handling":1,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "strength"
+    },
+    {
+        "id":2,
+        "name": "Short Bow",
+        "damage_type": 3,
+        "range": 25,
+        "handling":2,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "dexterity"
+    },
+    {
+        "id":3, 
+        "name": "Long Bow",
+        "damage_type": 3,
+        "range": 45,
+        "handling":2,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "dexterity"
+    },
+    {
+        "id":4,
+        "name": "Dagger",
+        "damage_type": 3,
+        "range": 0.5, 
+        "handling":1,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "dexterity"
+    },
+    {
+        "id": 5,
+        "name": "Claymore",
+        "damage_type": 1,
+        "range": 3,
+        "handling":2,
+        "specialization_attribute": "strength",
+        "damage_attribute": "strength"
+    },
+    {
+        "id": 6,
+        "name": "Greatsword",
+        "damage_type": 1,
+        "range": 2.5,
+        "handling":2,
+        "specialization_attribute": "strength",
+        "damage_attribute": "strength"
+    },
+    {
+        "id": 7,
+        "name": "Rapier",
+        "damage_type": 3,
+        "range": 1.5,
+        "handling":1,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "dexterity"
+    },
+    {
+        "id":8,
+        "name": "Katana",
+        "damage_type": 1,
+        "range": 2.5,
+        "handling": 2,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "strength"
+    },
+    {
+        "id": 9,
+        "name": "Crossbow",
+        "damage_type":3,
+        "range": 30,
+        "handling":2,
+        "specialization_attribute":"dexterity",
+        "damage_attribute": "dexterity"
+    },
+    {
+        "id": 10,
+        "name":"Hand Crossbow",
+        "damage_type": 3,
+        "range": 15,
+        "handling":1,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "dexterity"
+    },
+    {
+        "id": 11,
+        "name":"Warhammer",
+        "damage_type": 2,
+        "range": 3,
+        "handling":2,
+        "specialization_attribute": "strength",
+        "damage_attribute": "strength"
+    },
+    {
+        "id": 12,
+        "name":"Battle Axe",
+        "damage_type": 1,
+        "range": 3,
+        "handling":2,
+        "specialization_attribute": "dexterity",
+        "damage_attribute": "strength"
+    },
+    {
+        "id":13,
+        "name": "Staff",
+        "damage_type": 2,
+        "range":2,
+        "handling":1,
+        "specialization_attribute": "wisdom",
+        "damage_attribute": "strength"
+    }
+]

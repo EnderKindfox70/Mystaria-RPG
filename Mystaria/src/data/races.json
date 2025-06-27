@@ -1,0 +1,115 @@
+[
+    {
+        "id":1,
+        "name":"Human",
+        "magies_privilegie": [],
+        "description":"Humans are the majority race of Mystaria",
+        "traits": [],
+        "sub_races": [],
+        "racial_abilities": [],
+        "attributes": {
+            "strength": 1,
+            "constitution":1,
+            "dexterity":1,
+            "intelligence":1,
+            "wisdom":1,
+            "charisma":1
+        }
+    },
+    {
+        "id":2,
+        "name": "Elf",
+        "magies_privilegie": [6,9],
+        "description":"Elves are a race native to the woods",
+        "traits": [],
+        "sub_races": 
+        [
+            {"id":1, "name":"Continental Elf", "description":""},
+            {"id":2, "name":"Island Elf", "description":""}
+        ],
+        "racial_abilities": [],
+        "attributes": {
+            "strength": 0,
+            "constitution":0,
+            "dexterity":0,
+            "intelligence":1,
+            "wisdom":2,
+            "charisma":0
+        }
+    },
+    {
+        "id":3,
+        "name":"Deepwalker",
+        "magies_privilegie": [2,7],
+        "description":"Deepwalkers are aquatic creatures",
+        "traits": 
+        [
+            {"id":1, "name":"Amphibious", "description":"allows breathing underwater"}
+        ],
+        "sub_races": 
+        [
+            {"id":1, "name":"Defensive Specialization", "description":""},
+            {"id":2, "name":"Offensive Specialization", "description":""},
+            {"id":3, "name":"Mobile Specialization", "description":""},
+            {"id":4, "name":"Magical Specialization", "description":""},
+            {"id":5, "name":"Sensory Specialization", "description":""}
+        ],
+        "racial_abilities": [],
+        "attributes": 
+        {
+            "strength": 0,
+            "constitution":0,
+            "dexterity":0,
+            "intelligence":0,
+            "wisdom":0,
+            "charisma":0
+        }
+    },
+    {
+        "id":4,   
+        "name":"Dwarf",
+        "magies_privilegie": [3],
+        "description":"Dwarves are sturdy beings living near rocky caverns",
+        "traits": [],
+        "sub_races": 
+        [
+            {"id":1, "name":"Mountain Dwarves", "description":""},
+            {"id":2, "name":"Deep Dwarves", "description":""}
+        ],
+        "racial_abilities": [],
+        "attributes": 
+        {
+            "strength": 1,
+            "constitution":2,
+            "dexterity":0,
+            "intelligence":0,
+            "wisdom":0,
+            "charisma":0
+        }
+    },
+    {
+        "id":5,
+        "name":"beast human",
+        "magies_privilegie": [],
+        "description":"Beast humans are a subspecies of humans with animalistic traits",
+        "traits": 
+        [
+            {"id":1, "name":"Animalistic Traits", "description":"possess traits of a specific animal"}
+        ],
+        "sub_races": [
+            {"id":1, "name":"Feline Beast Human", "description":""},
+            {"id":2, "name":"Canine Beast Human", "description":""},
+            {"id":3, "name":"Reptilian Beast Human", "description":""},
+            {"id":4, "name":"Avian Beast Human", "description":""}
+        ],
+        "racial_abilities": [],
+        "attributes": {
+            "strength": 0,
+            "constitution":1,
+            "dexterity":1,
+            "intelligence":0,
+            "wisdom":0,
+            "charisma":0
+        }
+    }
+]

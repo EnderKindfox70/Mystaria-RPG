@@ -1,0 +1,38 @@
+[
+    {
+        "id":1,
+        "name": "cloth",
+        "defense_modifier": -1,
+        "magic_def_modifier": -1
+    },
+    {
+        "id":2,
+        "name": "leather",
+        "defense_modifier": 0,
+        "magic_def_modifier": 0
+    },
+    {
+        "id":3,
+        "name": "bronze",
+        "defense_modifier": 1,
+        "magic_def_modifier": 0            
+    },
+    {
+        "id":4,
+        "name": "steel",
+        "defense_modifier": 2,
+        "magic_def_modifier": 0
+    },
+    {
+        "id":5,
+        "name":"gold",
+        "defense_modifier":1,
+        "magic_def_modifier": 3
+    },
+    {
+        "id": 6,
+        "name": "silver",
+        "defense_modifier": 1,
+        "magic_def_modifier": 3
+    }
+]

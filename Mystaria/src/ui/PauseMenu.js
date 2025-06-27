@@ -54,8 +54,9 @@ export class PauseMenu extends Scene
             const saveId = gameScene.currentSaveId || null;
             const saveData = {
                 id: saveId,
-                character: {
-                    name: player.name || 'Hero',
+                character: 
+                {
+                    name: player.name,
                     level: player.level || 1,
                     position: { x: player.x, y: player.y, scene: gameScene.scene.key },
                 }

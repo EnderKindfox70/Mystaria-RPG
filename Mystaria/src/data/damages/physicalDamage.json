@@ -1,0 +1,14 @@
+[
+    {
+        "id":1,
+        "name":"slashing"
+    },
+    {
+        "id":2,
+        "name": "bludgeoning"
+    },
+    {
+        "id":3,
+        "name": "piercing"
+    }
+]

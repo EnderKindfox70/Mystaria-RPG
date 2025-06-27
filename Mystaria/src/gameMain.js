@@ -4,7 +4,7 @@ import { GameOver } from './scenes/GameOver';
 import { MainMenu } from './scenes/MainMenu';
 import { Preloader } from './scenes/Preloader';
 import { CharacterCreationMenu } from './ui/CharacterCreationMenu';
-import { AUTO, Game, Physics } from 'phaser';
+import { AUTO, DOM, Game, Physics } from 'phaser';
 import { LoadSaveMenu } from './ui/loadSaveMenu';
 import { PauseMenu } from './ui/pauseMenu';
 import { InputManager } from './utils/inputManager';
@@ -17,6 +17,10 @@ const config = {
     height: 768,
     parent: 'game-container',
     pixelArt: true,
+    dom:
+    {
+        createContainer: true
+    },
     scale: 
     {
         mode: Phaser.Scale.FIT,

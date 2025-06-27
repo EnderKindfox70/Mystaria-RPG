@@ -1,0 +1,161 @@
+{
+
+    "items":
+    [
+        {
+            "id": 1,
+            "name":"dull blade",
+            "type": "weapon",
+            "weapon_category":1,
+            "weapon_material": 4,
+            "min_dmg": 2,
+            "max_dmg":5
+        },
+        {
+            "id": 2,
+            "name":"survival knife",
+            "type": "weapon",
+            "weapon_category":4,
+            "weapon_material": 2,
+            "min_dmg": 1,
+            "max_dmg":4
+        },
+        {
+            "id":3,
+            "name":"copper cutlass",
+            "type": "weapon",
+            "weapon_category":4,
+            "weapon_material": 3,
+            "min_dmg": 1,
+            "max_dmg":5
+        },
+        {
+            "id":4,
+            "name":"worn hunting bow",
+            "type": "weapon",
+            "weapon_category":4,
+            "weapon_material": 4,
+            "min_dmg": 1,
+            "max_dmg":4
+        },
+        {
+            "id":5,
+            "name": "eroded bronze rapier",
+            "type": "weapon",
+            "weapon_category":7,
+            "weapon_material": 4,
+            "min_dmg": 2,
+            "max_dmg":4
+        },
+        {
+            "id":6,
+            "name": "heavy copper hammer",
+            "type": "weapon",
+            "weapon_category":11,
+            "weapon_material": 3,
+            "min_dmg": 3,
+            "max_dmg":5
+        },
+        {
+            "id":7,
+            "name": "worn crossbow",
+            "type": "weapon",
+            "weapon_category":9,
+            "weapon_material": 3,
+            "min_dmg": 3,
+            "max_dmg":5      
+        },
+        {
+            "id":8,
+            "name": "patched bow",
+            "type": "weapon",
+            "weapon_category":2,
+            "weapon_material": 1,
+            "min_dmg": 1,
+            "max_dmg":3     
+        },
+        {
+            "id": 9,
+            "name":"Zanpakuto",
+            "type": "weapon",
+            "weapon_category": 8,
+            "weapon_material": 5,
+            "min_dmg": 5,
+            "max_dmg": 8
+        },
+        {
+            "id":10,
+            "name": "old Claymore",
+            "type": "weapon",
+            "weapon_category":5,
+            "weapon_material": 4,
+            "min_dmg": 3,
+            "max_dmg":5
+        },
+        {
+            "id":11,
+            "name": "weak healing potion",
+            "type":"potion",
+            "ingredients": [],
+            "success": 5,
+            "effect": "restores 20 HP to the drinker"
+        },
+        {
+            "id":12,
+            "name": "weak mana potion",
+            "type":"potion",
+            "ingredients": [],
+            "success": 5,
+            "effect": "restores 20 mana to the drinker"
+        },
+        {
+            "id":13,
+            "name":"worn long staff",
+            "type":"weapon",
+            "weapon_category":13,
+            "weapon_material": 1,
+            "min_dmg": 1,
+            "max_dmg":3
+        },
+        {
+            "id":14,
+            "name":"chainmail",
+            "type":"armor",
+            "slot": "chest",
+            "armor_category":2,
+            "armor_material":4,
+            "physical_defense":15,
+            "magic_defense":5
+        },
+        {
+            "id":15,
+            "name":"chainmail leggings",
+            "type":"armor",
+            "slot": "legs",
+            "armor_category":2,
+            "armor_material":4,
+            "physical_defense":10,
+            "magic_defense":5
+        },
+        {
+            "id":16,
+            "name":"reinforced leather boots",
+            "type":"armor",
+            "slot": "feet",
+            "armor_category":2,
+            "armor_material":4,
+            "physical_defense":10,
+            "magic_defense":5
+        },
+        {
+            "id":17,
+            "name":"chainmail helm",
+            "type":"armor",
+            "slot": "head",
+            "armor_category":2,
+            "armor_material":4,
+            "physical_defense":10,
+            "magic_defense":5
+        }        
+    ]
+}

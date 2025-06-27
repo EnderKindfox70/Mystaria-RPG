@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "rotten wooden shield",
+        "category": 1,
+        "material": 1,
+        "physical_defense": 1,
+        "magic_defense": 0,
+        "weight": 1,
+        "description": "A shield made of rotting wood, barely holding together. It offers minimal protection."
+    },
+    {
+        "id": 2,
+        "name": "basic wooden shield",
+        "category": 1,
+        "material": 1,
+        "physical_defense": 3,
+        "magic_defense": 0,
+        "weight": 2,
+        "description": "A simple wooden shield, light and easy to carry. It provides basic protection against physical attacks."
+    },
+    {
+        "id":3,
+        "name": "stone shield",
+        "category": 2,
+        "material": 2,
+        "physical_defense": 5,
+        "magic_defense": 0,
+        "weight": 7,
+        "description": "A sturdy shield made of stone, offering solid protection against physical attacks. It is quite heavy, making it less suitable for agile fighters."
+    },
+    {
+        "id":4,
+        "name": "copper shield",
+        "category": 1,
+        "material": 3,
+        "physical_defense": 4,
+        "magic_defense": 2,
+        "weight": 3,
+        "description": "A shield crafted from copper, providing a balance of physical and magical defense. It is relatively light and easy to handle."
+    },
+    {
+        "id":5,
+        "name": "small steel shield",
+        "category": 1,
+        "material": 5,
+        "physical_defense": 6,
+        "magic_defense": 0,
+        "weight": 4,
+        "description": "A small but sturdy shield made of steel. It offers excellent physical protection, though it is heavier than wooden shields."
+    }
+]

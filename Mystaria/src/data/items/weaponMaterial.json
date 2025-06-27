@@ -1,0 +1,37 @@
+[
+    {
+        "id":1,
+        "name": "wood",
+        "stats_modifier":-3
+    },
+    {
+        "id":2,
+        "name": "stone",
+        "stats_modifier": -2
+    },
+    {
+        "id":3,
+        "name": "copper",
+        "stats_modifier": -1
+    },
+    {
+        "id":4,
+        "name": "bronze",
+        "stats_modifier": 0
+    },
+    {
+        "id":5,
+        "name": "steel",
+        "stats_modifier": 1
+    },
+    {
+        "id":6, 
+        "name": "gold",
+        "stats_modifier": 1
+    },
+    {
+        "id":7, 
+        "name": "silver",
+        "stats_modifier": 1
+    }
+]

@@ -1,0 +1,51 @@
+[
+    {
+        "id":1,
+        "name": "wood",
+        "magical_res_modifier":0,
+        "physical_res_modifier":0,
+        "weight_modifier": -2
+    },
+    {
+        "id":2,
+        "name": "stone",
+        "magical_res_modifier":0,
+        "physical_res_modifier":4,
+        "weight_modifier": 5    
+    },
+    {
+        "id":3,
+        "name": "copper",
+        "magical_res_modifier":1,
+        "physical_res_modifier":3,
+        "weight_modifier": 2    
+    },
+    {
+        "id":4,
+        "name": "bronze",
+        "magical_res_modifier":2,
+        "physical_res_modifier":4,
+        "weight_modifier": 3    
+    },
+    {
+        "id":5,
+        "name": "steel",
+        "magical_res_modifier":1,
+        "physical_res_modifier":6,
+        "weight_modifier": 2    
+    },
+    {
+        "id":6, 
+        "name": "gold",
+        "magical_res_modifier":7,
+        "physical_res_modifier":2,
+        "weight_modifier": -1    
+    },
+    {
+        "id":7, 
+        "name": "silver",
+        "magical_res_modifier":7,
+        "physical_res_modifier":2,
+        "weight_modifier": -1     
+    }
+]
