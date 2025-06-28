@@ -11,13 +11,42 @@ export class BaseGameScene extends Scene
 
     preload() 
     {
+        this.load.image('player_static', '../src/assets/sprites/player.png');
+        this.load.spritesheet('player', '../src/assets/sprites/player_walk.png', {frameWidth: 32,frameHeight: 32});
     }
 
     create() 
     {
+        this.anims.create({
+        key: 'walk-down',
+        frames: this.anims.generateFrameNumbers('player', { start: 0, end: 2 }),
+        frameRate: 8,
+        repeat: -1
+        });
 
+        this.anims.create({
+        key: 'walk-left',
+        frames: this.anims.generateFrameNumbers('player', { start: 3, end: 5 }),
+        frameRate: 8,
+        repeat: -1
+        });
+
+        this.anims.create({
+        key: 'walk-right',
+        frames: this.anims.generateFrameNumbers('player', { start: 6, end: 8 }),
+        frameRate: 8,
+        repeat: -1
+        });
+
+        this.anims.create({
+        key: 'walk-up',
+        frames: this.anims.generateFrameNumbers('player', { start: 9, end: 11 }),
+        frameRate: 8,
+        repeat: -1
+        });
+
+        console.log(this.anims.exists('walk-up'));  // Devrait afficher true
         this.player = new Player(this, 0, 0, 'player');
-
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setZoom(3);
         this.cameras.main.roundPixels = true;
@@ -47,6 +76,7 @@ export class BaseGameScene extends Scene
             this.player.x = saveData.character.position.x;
             this.player.y = saveData.character.position.y;
             this.player.name = saveData.character.name;
+            this.player.playerData = saveData.character.playerData;
         }
     }
 }

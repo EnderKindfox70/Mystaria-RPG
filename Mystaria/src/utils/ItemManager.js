@@ -38,7 +38,7 @@ export default class ItemManager
         for(const item_data of weapon_category) 
         {
             let weapon_damage = PhysicalDamage.list.find(dmg => dmg.id === item_data.damage_type)
-            new WeaponCategory(item_data.id, item_data.name, item_data.damage_type, item_data.range, item_data.handling, item_data.specialization_attribute, item_data.damage_attribute);
+            new WeaponCategory(item_data.id, item_data.name, weapon_damage, item_data.range, item_data.handling, item_data.specialization_attribute, item_data.damage_attribute);
         }
         for(const item_data of weapon_material) 
         {

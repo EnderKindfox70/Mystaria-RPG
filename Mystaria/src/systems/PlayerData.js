@@ -1,7 +1,8 @@
 export default class PlayerData
 {
-    constructor(playerClass, race,background,magic,stats, attributes, skills, spells, inventory, equipment, quests, achievements,level, experience, gold)
+    constructor(gender,playerClass,race,background,magic = [],stats, attributes, skills, spells, inventory, equipment, quests, achievements,level, experience, gold)
     {
+        this.gender = gender;
         this.playerClass = playerClass; // Player class object
         this.race = race;
         this.magic = magic; // Magic object

@@ -29,10 +29,7 @@ export class Preloader extends Scene
     preload ()
     {
         this.load.setPath('assets');
-        this.load.image('logo', 'logo.png');
-
         console.log('Loading assets...');
-
     }
 
     async create ()

@@ -85,7 +85,8 @@ export class SaveSystem {
     }
 
     static async loadGame(saveId) {
-        try {
+        try 
+        {
             const db = await this.initialize();
             return new Promise((resolve, reject) => {
                 const transaction = db.transaction([this.storeName], 'readonly');

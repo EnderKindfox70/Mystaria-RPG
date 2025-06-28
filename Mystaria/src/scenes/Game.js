@@ -11,7 +11,6 @@ export class Game extends BaseGameScene
     preload()
     {
         super.preload();
-        this.load.image('player', '../src/assets/sprites/player.png');
         this.load.tilemapTiledJSON('tilemap', '../src/maps/tilemap.json');
         this.load.image('tileset', '../src/assets/tileset/tileset.png');
     }

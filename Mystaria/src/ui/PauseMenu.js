@@ -59,6 +59,7 @@ export class PauseMenu extends Scene
                     name: player.name,
                     level: player.level || 1,
                     position: { x: player.x, y: player.y, scene: gameScene.scene.key },
+                    playerData: player.playerData
                 }
             };
             await SaveSystem.saveGame(saveData);
