@@ -26,9 +26,28 @@ export class InputManager extends Scene
                 this.scene.stop('pauseMenu');
                 const pausedScenes = this.scene.manager.getScenes(false);
                 const pausedScene = pausedScenes.find(s => !UNPAUSABLE_SCENES.includes(s.scene.key));
-                
                 if(pausedScene) 
                 {
+                    this.scene.resume(pausedScene.scene.key);
+                }
+            }
+        });
+
+        this.input.keyboard.on('keydown-I', () => {
+            const scenes = this.scene.manager.getScenes(true);
+            const mainScene = scenes.find(s => !UNPAUSABLE_SCENES.includes(s.scene.key));
+
+            if(mainScene && !this.scene.isActive('InventoryMenu')) 
+            {
+                this.scene.launch('InventoryMenu');
+                this.scene.pause(mainScene.scene.key);
+            } 
+            else if (this.scene.isActive('InventoryMenu')) 
+            {
+                this.scene.stop('InventoryMenu');
+                const pausedScenes = this.scene.manager.getScenes(false);
+                const pausedScene = pausedScenes.find(s => !UNPAUSABLE_SCENES.includes(s.scene.key));
+                if(pausedScene) {
                     this.scene.resume(pausedScene.scene.key);
                 }
             }

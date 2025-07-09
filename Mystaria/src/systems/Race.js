@@ -25,7 +25,7 @@ export default class Race
                 let i = 0;
                 for(const sub_race of race.sub_races)
                 {
-                    new Race(parseInt(race.id+''+i), sub_race.name, sub_race.description, race.attributes, object_race);
+                    new Race(parseInt(race.id+''+i), sub_race.name, sub_race.description, sub_race.attributes, object_race);
                     i++
                 }
             }

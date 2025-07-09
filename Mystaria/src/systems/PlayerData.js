@@ -1,22 +1,187 @@
+import ElementalMagic from "./magic/ElementalMagic";
+import NonPolarisedMagic from "./magic/NonPolarisedMagic";
 export default class PlayerData
 {
-    constructor(gender,playerClass,race,background,magic = [],stats, attributes, skills, spells, inventory, equipment, quests, achievements,level, experience, gold)
+    constructor(name,gender,playerClass,race,background,magic = [],stats,currents_stats={hp:0,mana:0,experience:0}, attributes, skills, spells, inventory, quests, achievements,level, experience, gold,weight)
     {
+        this.name = name;
         this.gender = gender;
         this.playerClass = playerClass; // Player class object
         this.race = race;
         this.magic = magic; // Magic object
         this.background = background; // Background object
         this.stats = stats; // Stats object
+        this.currents_stats = currents_stats;
         this.attributes = attributes; // Attributes object
+        this.attributes_modifier = {strength:0,constitution:0 ,dexterity:0,intelligence:0,wisdom:0,charisma:0}
         this.skills = skills; // Skills object
         this.spells = spells; // Spells object
         this.inventory = inventory; // Inventory object
-        this.equipment = equipment; // Equipment object
         this.quests = quests; // Quests object
         this.achievements = achievements;
         this.level = level; // Player level
         this.experience = experience; // Player experience points
         this.gold = gold; // Player gold
+        this.weight = weight;
+    }
+
+    static getModifier(value) 
+    {
+        if (value >= 1 && value <= 3) return -4;
+        if (value >= 4 && value <= 5) return -3;
+        if (value >= 6 && value <= 7) return -2;
+        if (value >= 8 && value <= 9) return -1;
+        if (value >= 10 && value <= 11) return 0;
+        if (value >= 12 && value <= 13) return 1;
+        if (value >= 14 && value <= 15) return 2;
+        if (value >= 16 && value <= 17) return 3;
+        if (value >= 18 && value <= 20) return 4;
+        return 0;
+    }
+
+    updateStatsAttribute()
+    {
+        
+        const statAdjustments = 
+        {
+            hp: this.attributes.constitution,
+            phy_atk: this.attributes_modifier.strength ? this.attributes_modifier.strength * 2 : 0, 
+            mag_atk: this.attributes_modifier.intelligence ?this.attributes_modifier.intelligence * 2:0,
+            mana: this.attributes_modifier.wisdom ? this.attributes_modifier.wisdom * 5 : 0,
+            speed: this.attributes_modifier.dexterity ? this.attributes_modifier.dexterity * 2 : 0
+        };
+        console.log("Stat Adjustments:", statAdjustments);
+
+        for (const [stat, adjustment] of Object.entries(statAdjustments)) 
+        {
+
+            this.stats[stat] += adjustment;
+            if(this.stats[stat] <= 0)
+            {
+                this.stats[stat] = 1;
+            }
+        }
+
+    }
+
+    updateAttributesModifier() 
+    {
+        for (const key in this.attributes_modifier) 
+        {
+            if (this.attributes.hasOwnProperty(key)) {
+                this.attributes_modifier[key] = PlayerData.getModifier(this.attributes[key]);
+            }
+        }
+        this.totalWeightUpdate();
+
+    }
+
+    totalWeightUpdate()
+    {
+        this.weight = Math.max(1, 10 + (this.attributes_modifier.strength ? this.attributes_modifier.strength * 2 : 0));
+    }
+
+    weightUpdate()
+    {
+
+    }
+
+    static init(playerData)
+    {
+
+        // -------------- inventory set --------------
+        playerData.inventory = {equipment:{head:null,torso:null,legs:null,feet:null,right_hand:null,left_hand:null}, bag:[]}
+        //-------------- Attribute set --------------
+        let parent_strength = 0;
+        let parent_constitution = 0;
+        let parent_dexterity = 0;
+        let parent_intelligence = 0;
+        let parent_wisdom = 0;
+        let parent_charisma = 0;
+        if(playerData.race.parentRace !== null)
+        {
+            parent_strength = playerData.race.parentRace.attributes.strength
+            parent_constitution = playerData.race.parentRace.attributes.constitution; 
+            parent_dexterity = playerData.race.parentRace.attributes.dexterity;
+            parent_intelligence =  playerData.race.parentRace.attributes.intelligence;
+            parent_wisdom = playerData.race.parentRace.attributes.wisdom;
+            parent_charisma =  playerData.race.parentRace.attributes.charisma;
+        }
+
+        playerData.attributes.strength += playerData.race.attributes.strength + parent_strength ;
+        playerData.attributes.constitution += playerData.race.attributes.constitution + parent_constitution;
+        playerData.attributes.dexterity += playerData.race.attributes.dexterity + parent_dexterity;
+        playerData.attributes.intelligence += playerData.race.attributes.intelligence + parent_intelligence;
+        playerData.attributes.wisdom += playerData.race.attributes.wisdom + parent_wisdom;
+        playerData.attributes.charisma += playerData.race.attributes.charisma + parent_charisma;
+
+        //-------------- Skill attribution -------------------
+
+        for(const background_skill of playerData.background.skills)
+        {
+            let skill = playerData.skills.find(skill => skill.id === background_skill);
+            skill.score++;
+        }
+
+
+        // -------------- Experience & level set -------------
+
+        playerData.level = 1;
+        playerData.experience = 10;
+        playerData.currents_stats.experience = 0;
+
+        // -------------- stats attribution -------------
+        playerData.stats = {hp:0,phy_atk:0,mag_atk:0,phy_def:0,mag_def:0,mana:0,speed:0};
+
+        playerData.stats.hp += playerData.playerClass.stats[0].hp;
+        playerData.stats.phy_atk += playerData.playerClass.stats[0].phy_atk;
+        playerData.stats.mag_atk += playerData.playerClass.stats[0].mag_atk;
+        playerData.stats.mana += playerData.playerClass.stats[0].mana;
+        playerData.stats.speed += playerData.playerClass.stats[0].speed;
+
+
+
+        //-------------- Money attribution --------------
+        let money = Math.floor(Math.random()*100 - 0) + playerData.background.gold;
+        playerData.gold = money;
+        // -------------- magic attribution --------------
+        const weights = [0.5, 4, 1, 0.5];
+        const total = weights.reduce((a, b) => a + b, 0);
+        let r = Math.random() * total;
+        let number_of_magic = 0;
+        for (let i = 0; i < weights.length; i++) 
+        {
+            if (r < weights[i]) 
+            {
+                number_of_magic = i;
+                break;
+            }
+            r -= weights[i];
+        }
+
+        for(let i = 0; i< number_of_magic; i++)
+        {
+            let magic;
+            let duplicate;
+            do 
+            {
+                const index = Math.floor(Math.random() * ElementalMagic.list.length);
+                magic = ElementalMagic.list[index];
+                duplicate = playerData.magic.some(m => m.magic.id === magic.id);
+            } 
+            while (duplicate);
+            if (!duplicate) 
+            {
+                playerData.magic.push({ magic: magic, discovered: false });
+            }
+        }
+
+        if(number_of_magic !== 0)
+        {
+            playerData.magic.push({magic:NonPolarisedMagic.list[0],discovered: false},{magic: NonPolarisedMagic.list[1],discovered:false})
+        }
+
+        return new PlayerData(playerData.name,playerData.gender,playerData.playerClass,playerData.race,playerData.background,playerData.magic,playerData.stats,playerData.currents_stats,playerData.attributes,playerData.skills,playerData.spells,playerData.inventory,playerData.quests,playerData.achievements,playerData.level,playerData.experience,playerData.gold,playerData.weight)
     }
 }
+

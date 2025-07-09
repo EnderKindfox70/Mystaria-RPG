@@ -8,6 +8,7 @@ import { AUTO, DOM, Game, Physics } from 'phaser';
 import { LoadSaveMenu } from './ui/loadSaveMenu';
 import { PauseMenu } from './ui/pauseMenu';
 import { InputManager } from './utils/inputManager';
+import { InventoryMenu } from './ui/InventoryMenu';
 
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
@@ -35,7 +36,8 @@ const config = {
         GameOver,
         CharacterCreationMenu,
         LoadSaveMenu,
-        InputManager
+        InputManager,
+        InventoryMenu
 
     ],
     physics: {

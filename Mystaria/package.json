@@ -1,4 +1,5 @@
 {
+    "main": "main.cjs",
     "name": "template-vite",
     "description": "A Phaser 3 template using Vite.",
     "version": "1.4.0",
@@ -18,9 +19,11 @@
         "dev": "node log.js dev & vite --config vite/config.dev.mjs",
         "build": "node log.js build & vite build --config vite/config.prod.mjs",
         "dev-nolog": "vite --config vite/config.dev.mjs",
-        "build-nolog": "vite build --config vite/config.prod.mjs"
+        "build-nolog": "vite build --config vite/config.prod.mjs",
+        "start": "electron ."
     },
     "devDependencies": {
+        "electron": "^37.2.0",
         "terser": "^5.39.0",
         "vite": "^6.3.1"
     },

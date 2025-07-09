@@ -1,4 +1,6 @@
 import { FileDataLoader } from '../utils/fileDataLoader';
+import ArmorCategory from '../systems/items/ArmorCategory'
+import WeaponCategory from '../systems/items/WeaponCategory'
 export default class PlayerClass
 {
     static list = [];
@@ -24,7 +26,24 @@ export default class PlayerClass
         const class_data = await FileDataLoader.loadData('classes');
         for (const pclass of class_data)
         {
-            new PlayerClass(pclass.id, pclass.name, pclass.accuracy,pclass.favored_weapon,pclass.favored_armor,pclass.stats,pclass.start_skill, pclass.start_spell, pclass.skills,pclass.starting_kit,pclass.parent_class);
+            console.log(pclass.favored_armor);
+            const favored_armor= [];
+            for(let armor of pclass.favored_armor)
+            {
+                favored_armor.push(ArmorCategory.list.find(arm => arm.id === armor));
+            }
+
+            const favored_weapon = []
+            for(let weapon of pclass.favored_weapon)
+            {
+                if(weapon === 0)
+                {
+                    favored_weapon.push(null);
+                    break;
+                }
+                favored_weapon.push(WeaponCategory.list.find(wp => wp.id === weapon));
+            }
+            new PlayerClass(pclass.id, pclass.name, pclass.accuracy,favored_weapon,favored_armor,pclass.stats,pclass.start_skill, pclass.start_spell, pclass.skills,pclass.starting_kit,pclass.parent_class);
         }
         console.log(PlayerClass.list);
     }

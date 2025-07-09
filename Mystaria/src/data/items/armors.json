@@ -1,42 +1,76 @@
 [
     {
-        "id": 14,
-        "name": "chainmail",
+        "id": 1,
+        "name": "chainmail chestpiece",
         "type": "armor",
-        "slot": "chest",
+        "slot": "torso",
         "armor_category": 2,
         "armor_material": 4,
         "physical_defense": 15,
-        "magic_defense": 5
+        "magic_defense": 5,
+        "weight": 3
     },
     {
-        "id": 15,
+        "id": 2,
         "name": "chainmail leggings",
         "type": "armor",
         "slot": "legs",
         "armor_category": 2,
         "armor_material": 4,
         "physical_defense": 10,
-        "magic_defense": 5
+        "magic_defense": 5,
+        "weight":3
     },
     {
-        "id": 16,
+        "id": 3,
         "name": "reinforced leather boots",
         "type": "armor",
         "slot": "feet",
         "armor_category": 2,
         "armor_material": 4,
         "physical_defense": 10,
-        "magic_defense": 5
+        "magic_defense": 5,
+        "weight":1.5
     },
     {
-        "id": 17,
+        "id": 4,
         "name": "chainmail helm",
         "type": "armor",
         "slot": "head",
         "armor_category": 2,
         "armor_material": 4,
         "physical_defense": 10,
-        "magic_defense": 5
+        "magic_defense": 5,
+        "weight":1.5
+    },
+    {
+        "id":5,
+        "name":"simple cloth shirt",
+        "slot": "torso",
+        "armor_category":1,
+        "armor_material":1,
+        "physical_defense":3,
+        "magic_defense":3,
+        "weight":0.4
+    },
+    {
+        "id":6,
+        "name": "simple leather pants",
+        "slot":"legs",
+        "armor_category":1,
+        "armor_material":2,
+        "physical_defense": 3,
+        "magic_defense":3,
+        "weight":0.4
+    },
+    {
+        "id":7,
+        "name": "simple hat",
+        "slot":"head",
+        "armor_category":1,
+        "armor_material":2,
+        "physical_defense": 2,
+        "magic_defense":3,
+        "weight":0.1
     }
 ]

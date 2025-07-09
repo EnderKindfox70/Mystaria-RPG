@@ -9,14 +9,19 @@
         ],
         "specialty":
         [
-
+            {"id":1,"name":"spearsman"},
+            {"id":2,"name":"archer"},
+            {"id":3,"name":"healer"}
         ],
         "ability":
         [
-            {"id":1, "name":"Military Training", "description": "Your martial training allows you to use reinforcement and emission from the start"}    
+            {"id":1, "name":"Military Training", "description": "Your martial training allows you to use reinforcement from the start"}    
         ],
         "equipment":
         [
+            {"type":"armor","slot":"torso", "item":1},
+            {"type":"armor","slot":"legs", "item":2},
+            {"type":"armor","slot":"feet", "item":3}
         ]
     },
     {
@@ -29,7 +34,9 @@
         ],
         "specialty":
         [
-            
+            {"id":1,"name":"Courtier"},
+            {"id":2,"name":"Diplomat"},
+            {"id":3,"name":"Count"}
         ],
         "ability":
         [
@@ -50,7 +57,8 @@
         ],
         "specialty":
         [
-            
+            {"id":1,"name":"freshwater fisherman"},
+            {"id":2,"name":"saltwater fisherman"}
         ],
         "ability":
         [
@@ -71,7 +79,8 @@
         ],
         "specialty":
         [
-            
+            {"id":1,"name":"tracker"},
+            {"id":2,"name":"trapper"}
         ],
         "ability":
         [
@@ -92,7 +101,9 @@
         ],
         "specialty":
         [
-            
+            {"id":1,"name":"Wanderer"},
+            {"id":2,"name":"Trader"},
+            {"id":3,"name":"Adventurer"}
         ],
         "ability":
         [
@@ -113,7 +124,9 @@
         ],
         "specialty":
         [
-            
+            {"id":1,"name":"Farmer"},
+            {"id":2,"name":"Shepherd"},
+            {"id":3,"name":"Lumberjack"}
         ],
         "ability":
         [
@@ -135,7 +148,10 @@
         ],
         "specialty":
         [
-            
+            {"id":1,"name":"killer"},
+            {"id":2,"name":"spy"},
+            {"id":3,"name":"burglar"},
+            {"id":4,"name":"vigilante"}            
         ],
         "ability":
         [
@@ -156,11 +172,14 @@
         ],
         "specialty":
         [
+            {"id":1,"name":"Scholar"},
+            {"id":2,"name":"Astrologist"},
+            {"id":3,"name":"Doctor"}
             
         ],
         "ability":
         [
-            
+            {"id":1, "name":"Scholar enlightenment", "description": "Your studies permited you to learn how to use emission magic"}         
         ],
         "equipment":
         [
@@ -177,7 +196,10 @@
         ],
         "specialty":
         [
-            
+            {"id":1,"name":"Pirate"},
+            {"id":2,"name":"Merchant"},
+            {"id":3, "name": "Navigator"}
+
         ],
         "ability":
         [
