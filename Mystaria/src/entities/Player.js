@@ -1,7 +1,8 @@
 import Entity from "./Entity";
 
 export default class Player extends Entity {
-    constructor(scene, x, y, texture = 'player', frame, name, playerData) {
+    constructor(scene, x, y, texture = 'player', frame, name, playerData) 
+    {
         super(scene, x, y, texture, frame);
         this.name = name;
         this.playerData = playerData;
@@ -81,20 +82,22 @@ export default class Player extends Entity {
         this.body.velocity.normalize().scale(this.speed);
 
         // Animation en mouvement
-        if (velocityX !== 0 || velocityY !== 0) 
+       if (velocityX !== 0 || velocityY !== 0) 
         {
             if (this.anims.currentAnim?.key !== animKey) {
                 this.anims.play(animKey, true);
             }
             this.lastDirection = animKey; // Mémorise la dernière direction pour l'idle
-        } else {
+        } 
+        else 
+        {
             // Animation d'attente (idle)
             const idleFrames = {
                 'walk-down': 0,
                 'walk-left': 4,
                 'walk-right': 8,
-                'walk-up': 12
-            };
+                'walk-up': 11
+            }; 
             const frame = idleFrames[this.lastDirection] ?? 0;
             this.anims.stop();
             this.setFrame(frame);

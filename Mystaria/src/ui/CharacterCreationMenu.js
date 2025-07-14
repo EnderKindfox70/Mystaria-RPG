@@ -295,17 +295,15 @@ export class CharacterCreationMenu extends Scene
 
 
 
-                const saveId = await SaveSystem.saveGame({
-                    character: {
-                        name: name,
-                        level: 1,
-                        position: {x:100, y: 100, scene: 'Game'},
-                        playerData: playerData
-                        // Ajoute ici d'autres attributs (classe, genre, etc.)
-                    }
-                });
-                const saveData = await SaveSystem.loadGame(saveId);
-                this.scene.start('Game', { saveData });
+            const saveId = await SaveSystem.saveGame({
+                character: 
+                {
+                    position: {x:500, y: 400, scene: 'Game'},
+                    playerData: playerData
+                }
+            });
+            const saveData = await SaveSystem.loadGame(saveId);
+            this.scene.start('Game', { saveData });
             } 
             catch (error) 
             {

@@ -8,6 +8,11 @@ export class PauseMenu extends Scene
     {
         super('pauseMenu');
     }
+        
+    init(data) 
+    {
+        this.parentSceneKey = data?.parentSceneKey || 'Game';
+    }
 
     create() 
     {
@@ -28,7 +33,7 @@ export class PauseMenu extends Scene
         .on('pointerdown', () => 
         {
             this.scene.stop('pauseMenu');
-            this.scene.resume('Game');
+            this.scene.resume(this.parentSceneKey);
         })
         .on('pointerover', () => resumeButton.setStyle({ backgroundColor: '#6666aa' }))
         .on('pointerout', () => resumeButton.setStyle({ backgroundColor: '#444488' }));
@@ -44,7 +49,8 @@ export class PauseMenu extends Scene
         .on('pointerdown', async () => 
         {
             const allScenes = this.scene.manager.getScenes(false); 
-            const gameScene = allScenes.find(scene => scene.player);
+            const gameScene = allScenes.find(scene => scene.scene.key === this.scene.settings.data.parentSceneKey);
+
             if (!gameScene || !gameScene.player) {
                 console.warn('Aucune scène de jeu active trouvée pour la sauvegarde.');
                 return;
@@ -52,19 +58,19 @@ export class PauseMenu extends Scene
             
             const player = gameScene.player;
             const saveId = gameScene.currentSaveId || null;
-            const saveData = {
+            console.log('save id: '+ saveId);
+            const saveData = 
+            {
                 id: saveId,
                 character: 
                 {
-                    name: player.name,
-                    level: player.level || 1,
-                    position: { x: player.x, y: player.y, scene: gameScene.scene.key },
+                    position: { x: player.x, y: player.y, scene: this.parentSceneKey},
                     playerData: player.playerData
                 }
             };
             await SaveSystem.saveGame(saveData);
             this.scene.stop('pauseMenu');
-            this.scene.resume(gameScene.scene.key);
+            this.scene.resume(this.parentSceneKey);
         })
         .on('pointerover', () => SaveButton.setStyle({ backgroundColor: '#6666aa' }))
         .on('pointerout', () => SaveButton.setStyle({ backgroundColor: '#444488' }));
@@ -80,7 +86,7 @@ export class PauseMenu extends Scene
         .on('pointerdown', () => 
         {
             this.scene.stop('pauseMenu');
-            this.scene.stop('Game'); 
+            this.scene.stop(this.parentSceneKey); 
             this.scene.start('MainMenu'); 
         })
         .on('pointerover', () => QuitButton.setStyle({ backgroundColor: '#6666aa' }))

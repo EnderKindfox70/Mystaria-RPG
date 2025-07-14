@@ -1,5 +1,7 @@
 import { BaseGameScene } from './BaseGameScene.js';
 import Player from '../entities/Player.js';
+import Enemy from '../entities/Enemy.js';
+import { GameSession } from '../utils/gameSession.js';
 
 export class Game extends BaseGameScene
 {
@@ -13,11 +15,12 @@ export class Game extends BaseGameScene
         super.preload();
         this.load.tilemapTiledJSON('tilemap', '../src/maps/tilemap.json');
         this.load.image('tileset', '../src/assets/tileset/tileset.png');
+        this.load.spritesheet('enemy','../src/assets/sprites/enemy/Enemy.png',{frameWidth: 32,frameHeight: 32});
     }
 
     create()
     {
-        super.create(); // Appelle la logique de la classe mère (chargement map, player, saveData...)
+        super.create(); 
         const map = this.make.tilemap({ key: 'tilemap' });
         const tileset = map.addTilesetImage('test', 'tileset', 16, 16, 0, 0);
 
@@ -32,27 +35,21 @@ export class Game extends BaseGameScene
         collisionLayer.setCollisionByExclusion([-1]); // Exclut les tuiles vides de la collision
 
 
+        this.enemy = new Enemy(this, 346.9194173824158, 201.41941738241596, 'enemy',null,'enemy',null);
+
 
         this.cameras.main.setBounds(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
-
         this.physics.world.bounds.setTo(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
-        this.player.setCollideWorldBounds(true);
         this.physics.add.collider(this.player, collisionLayer);
 
-
-
-
-
-
-        
-        // Afficher les propriétés de collision dans la console
-        collisionLayer.forEachTile(tile => {
-            if (tile.properties.collision) {
-                console.log(`Tile at ${tile.x},${tile.y} has collision`);
-            }
+        this.exitZone = this.add.zone(500,620,600,10);
+        this.physics.world.enable(this.exitZone);
+        this.physics.add.overlap(this.player,this.exitZone, () =>
+        {
+            GameSession.saveData.position.x = 505;
+            GameSession.saveData.position.y = 175;
+            this.scene.start('Forest', {saveData: GameSession.getSaveData()})
         });
-
-        console.log(this.scene.get('Game').player);
     }
 
     update (time, delta)

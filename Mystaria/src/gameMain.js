@@ -9,6 +9,7 @@ import { LoadSaveMenu } from './ui/loadSaveMenu';
 import { PauseMenu } from './ui/pauseMenu';
 import { InputManager } from './utils/inputManager';
 import { InventoryMenu } from './ui/InventoryMenu';
+import { Forest } from './scenes/Forest';
 
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
@@ -37,7 +38,8 @@ const config = {
         CharacterCreationMenu,
         LoadSaveMenu,
         InputManager,
-        InventoryMenu
+        InventoryMenu,
+        Forest
 
     ],
     physics: {

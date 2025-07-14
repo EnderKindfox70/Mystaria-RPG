@@ -1,5 +1,6 @@
 import { Scene } from 'phaser';
 import Player from '../entities/Player.js';
+import { GameSession } from '../utils/gameSession.js';
 
 export class BaseGameScene extends Scene 
 {
@@ -45,8 +46,9 @@ export class BaseGameScene extends Scene
         repeat: -1
         });
 
-        console.log(this.anims.exists('walk-up'));  // Devrait afficher true
-        this.player = new Player(this, 0, 0, 'player');
+        this.player = new Player(this, 346.9194173824158, 201.41941738241596, 'player');
+        console.log(`Player position: x = ${this.player.x}, y = ${this.player.y}`);
+
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setZoom(3);
         this.cameras.main.roundPixels = true;
@@ -56,6 +58,8 @@ export class BaseGameScene extends Scene
         {
             this.loadFromSave(saveData);
         }
+        console.log(`Player position: x = ${this.player.x}, y = ${this.player.y}`);
+
     }
 
     update(time, delta) 
@@ -63,13 +67,26 @@ export class BaseGameScene extends Scene
         if (this.player && this.player.update) 
         {
             this.player.update();
+            GameSession.currentSaveId = this.currentSaveId
+            GameSession.saveData.position = 
+            {
+                x: this.player.x,
+                y: this.player.y,
+                scene: this.scene.key
+            }
+            GameSession.saveData.playerData = this.player.playerData;
+            console.log(this.player.x+" "+this.player.y);
+            //console.log(GameSession.currentSaveId);
         }
+
     }
 
     async loadFromSave(saveData) 
     {
         if (!saveData) return;
         this.currentSaveId = saveData.id || null;
+        GameSession.currentSaveId = this.currentSaveId;
+
         console.log('Loading from save:', this.player);
         if (saveData.character && saveData.character.position) 
         {
@@ -77,6 +94,9 @@ export class BaseGameScene extends Scene
             this.player.y = saveData.character.position.y;
             this.player.name = saveData.character.name;
             this.player.playerData = saveData.character.playerData;
+
+            GameSession.saveData.position = { ...saveData.character.position };
+            GameSession.saveData.playerData = { ...saveData.character.playerData };
         }
     }
 }

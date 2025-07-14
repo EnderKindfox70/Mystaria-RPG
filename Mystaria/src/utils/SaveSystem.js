@@ -62,13 +62,15 @@ export class SaveSystem {
                 const store = transaction.objectStore(this.storeName);
 
                 // Si saveData contient un id, on l'utilise pour écraser la sauvegarde existante
-                const save = {
-                    id: saveData.id || `save_${Date.now()}`,
+                const save = 
+                {
                     ...saveData,
+                    id: saveData.id || `save_${Date.now()}`,
                     created: saveData.created || Date.now(),
                     lastModified: Date.now()
                 };
 
+                console.log(save);
                 const request = store.put(save);
                 request.onsuccess = () => {
                     console.log('Save created or updated:', save.id);

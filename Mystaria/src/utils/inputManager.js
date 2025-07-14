@@ -18,17 +18,17 @@ export class InputManager extends Scene
 
             if(mainScene && !this.scene.isActive('pauseMenu')) 
             {
-                this.scene.launch('pauseMenu');
+                this.scene.launch('pauseMenu', { parentSceneKey: mainScene.scene.key });
                 this.scene.pause(mainScene.scene.key);
             } 
             else if (this.scene.isActive('pauseMenu')) 
             {
+                const pauseMenu = this.scene.get('pauseMenu');
+                const keyToResume = pauseMenu.parentSceneKey;
                 this.scene.stop('pauseMenu');
-                const pausedScenes = this.scene.manager.getScenes(false);
-                const pausedScene = pausedScenes.find(s => !UNPAUSABLE_SCENES.includes(s.scene.key));
-                if(pausedScene) 
+                if(keyToResume) 
                 {
-                    this.scene.resume(pausedScene.scene.key);
+                    this.scene.resume(keyToResume);
                 }
             }
         });
@@ -39,16 +39,18 @@ export class InputManager extends Scene
 
             if(mainScene && !this.scene.isActive('InventoryMenu')) 
             {
-                this.scene.launch('InventoryMenu');
+                this.scene.launch('InventoryMenu',{ parentSceneKey: mainScene.scene.key });
                 this.scene.pause(mainScene.scene.key);
             } 
             else if (this.scene.isActive('InventoryMenu')) 
             {
-                this.scene.stop('InventoryMenu');
-                const pausedScenes = this.scene.manager.getScenes(false);
-                const pausedScene = pausedScenes.find(s => !UNPAUSABLE_SCENES.includes(s.scene.key));
-                if(pausedScene) {
-                    this.scene.resume(pausedScene.scene.key);
+                console.log('Hiding Inventory');
+                this.scene.get('InventoryMenu').hideInventory();
+                const pauseMenu = this.scene.get('pauseMenu');
+                const keyToResume = pauseMenu.parentSceneKey;
+                if(keyToResume) 
+                {   
+                    this.scene.resume(keyToResume);
                 }
             }
         });
