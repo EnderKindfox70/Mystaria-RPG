@@ -2,6 +2,7 @@ import Player from "../entities/Player";
 import { GameSession } from "../utils/gameSession";
 import { BaseGameScene } from "./BaseGameScene";
 import Enemy from "../entities/Enemy";
+import EnemyData from "../systems/EnemyData";
 
 export class Forest extends BaseGameScene
 {
@@ -28,7 +29,7 @@ export class Forest extends BaseGameScene
     async create()
     {
         super.create();
-
+        this.enemies = []
 
         console.log(this.player);
         const map = this.make.tilemap({key:'forestmap'});
@@ -42,10 +43,10 @@ export class Forest extends BaseGameScene
         const decorationLayer = map.createLayer('decoration', tileset, offsetX, offsetY);
         const itemLayer = map.createLayer('item',tileset,offsetX,offsetY);
         console.log(itemLayer);
-        this.enemy = new Enemy(this, 346.9194173824158, 201.41941738241596, 'enemy',null,'enemy',null);
-        this.enemy1 = new Enemy(this, 500.9194173824158, 301.41941738241596, 'enemy',null,'enemy',null);
-        this.enemy2 = new Enemy(this, 400.9194173824158, 501.41941738241596, 'enemy',null,'enemy',null);
-
+        const enemy = new Enemy(this, 346.9194173824158, 201.41941738241596, 'enemy',null,'enemy1',"ForestBattleScene",EnemyData.list.find(e => e.id === 1),1);
+        const enemy1 = new Enemy(this, 500.9194173824158, 301.41941738241596, 'enemy',null,'enemy2',"ForestBattleScene",EnemyData.list.find(e => e.id === 1),1);
+        const enemy2 = new Enemy(this, 400.9194173824158, 501.41941738241596, 'enemy',null,'enemy3',"ForestBattleScene",EnemyData.list.find(e => e.id === 1),null);
+        this.enemies.push(enemy, enemy1, enemy2);
         decorationLayer.setDepth(2);
         collisionLayer.setDepth(2);
         collisionLayer.setCollisionByExclusion([-1]); // All tiles except -1 (empty) will collide
@@ -59,8 +60,8 @@ export class Forest extends BaseGameScene
         this.physics.world.enable(this.exitZone);
         this.physics.add.overlap(this.player,this.exitZone, () =>
         {
-            GameSession.saveData.position.x = 500;
-            GameSession.saveData.position.y = 605;
+            GameSession.gameData.position.x = 500;
+            GameSession.gameData.position.y = 605;
             this.scene.start('Game',{saveData: GameSession.getSaveData()});
         })
         console.log(this.scene.settings.data.saveData);

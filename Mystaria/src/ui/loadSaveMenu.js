@@ -39,8 +39,8 @@ export class LoadSaveMenu extends Scene
                     this.scene.stop('MainMenu');
                     this.cameras.main.fadeOut(500, 0, 0, 0);
 
-                    this.scene.start(saveData.character.position.scene, { saveData });
-                    let new_scene = this.scene.get(saveData.character.position.scene);
+                    this.scene.start(saveData.gameData.position.scene, { saveData });
+                    let new_scene = this.scene.get(saveData.gameData.position.scene);
                     new_scene.currentSaveId = saveData.id;
                 } 
                 catch (error) 

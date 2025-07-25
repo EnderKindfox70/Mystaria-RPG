@@ -9,7 +9,7 @@ import MagicalDamage from '../data/damages/magicalDamage.json';
 
 import Elementalmagic from '../data/magic/elementalMagic.json';
 import NonPolarisedMagic from '../data/magic/nonPolarisedMagic.json';
-import SoulMagic from '../data/magic/SoulMagic';
+import SoulMagic from '../data/magic/soulMagic';
 
 import items from '../data/items.json';
 import playerData from '../data/playerData.json';
@@ -28,6 +28,9 @@ import shield_material from '../data/items/shieldMaterial.json';
 import shields from '../data/items/shields.json';
 
 import potions from '../data/items/potions.json';
+
+import enemyData from '../data/enemy.json';
+import enemyType from '../data/enemyType.json';
 
 export class FileDataLoader 
 {
@@ -49,6 +52,10 @@ export class FileDataLoader
                 return SoulMagic;
             case 'items':
                 return items;
+            case 'enemies':
+                return enemyData;
+            case 'enemy_types':
+                return enemyType;
             case 'playerData':
                 return playerData;
             case 'races':

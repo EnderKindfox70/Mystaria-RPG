@@ -62,11 +62,12 @@ export class PauseMenu extends Scene
             const saveData = 
             {
                 id: saveId,
-                character: 
+                gameData: 
                 {
                     position: { x: player.x, y: player.y, scene: this.parentSceneKey},
-                    playerData: player.playerData
-                }
+                    playerData: player.playerData,
+                    partyMembers: []
+                },
             };
             await SaveSystem.saveGame(saveData);
             this.scene.stop('pauseMenu');

@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "name": "wolf",
+        "type": "beast",
+        "description": "A wild wolf that roams the forests. It is known for its agility and sharp teeth.",
+        "damage_type": 3,
+        "exp": 6,
+        "loot":
+        {
+
+        },
+        "stats":
+        {
+            "hp": 10,
+            "atk": 2,
+            "phy_def": 1,
+            "mag_def": 0,
+            "speed": 13
+        },
+        "skills":
+        [
+            {
+                "name": "Bite",
+                "description": "A quick bite that deals piercing damage.",
+                "damage": 3,
+                "type": "physical",
+                "cooldown": 2
+            }
+        ]   
+    }
+]

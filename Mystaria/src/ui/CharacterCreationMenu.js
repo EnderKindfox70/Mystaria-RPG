@@ -296,8 +296,8 @@ export class CharacterCreationMenu extends Scene
 
 
             const saveId = await SaveSystem.saveGame({
-                character: 
-                {
+                gameData: 
+                {   
                     position: {x:500, y: 400, scene: 'Game'},
                     playerData: playerData
                 }

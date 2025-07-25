@@ -1,6 +1,7 @@
 import { Scene } from "phaser";
+import BaseBattleScene from "../scenes/BaseBattleScene";
 
-const UNPAUSABLE_SCENES = ['MainMenu', 'Preloader', 'Boot', 'GameOver', 'CharacterCreationMenu', 'LoadSaveMenu', 'pauseMenu', 'InputManager'];
+const UNPAUSABLE_SCENES = ['MainMenu', 'Preloader', 'Boot', 'GameOver', 'CharacterCreationMenu','ForestBattleScene','InventoryMenu' ,'LoadSaveMenu', 'pauseMenu', 'InputManager'];
 
 export class InputManager extends Scene 
 {

@@ -3,10 +3,12 @@ import Spell from '../systems/Spells';
 import MagicManager from '../utils/MagicManager';
 import Background from '../systems/Background';
 import Race from '../systems/Race';
-import PlayerClass from '../systems/playerClass';
+import PlayerClass from '../systems/PlayerClass';
 import ItemManager from '../utils/ItemManager';
 import PhysicalDamage from '../systems/damage/PhysicalDamage';
 import MagicalDamage from '../systems/damage/MagicalDamage';
+import EnemyType from '../systems/EnemyType';
+import EnemyData from '../systems/EnemyData';
 
 export class Preloader extends Scene
 {
@@ -46,6 +48,8 @@ export class Preloader extends Scene
         await Background.init();
         await Race.init();
         await PlayerClass.init();
+        await EnemyType.init();
+        await EnemyData.init();
         this.scene.start('MainMenu');
     }
 }

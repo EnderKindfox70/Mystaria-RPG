@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "beast",
+        "weakness": [
+            "fire",
+            "blunt"
+        ],
+        "resistance": [
+            "piercing",
+            "slashing"
+        ]
+    }
+]

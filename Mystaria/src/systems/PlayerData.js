@@ -1,8 +1,11 @@
 import ElementalMagic from "./magic/ElementalMagic";
 import NonPolarisedMagic from "./magic/NonPolarisedMagic";
+import PhysicalDamage from "./damage/PhysicalDamage";
+import MagicalDamage from "./damage/MagicalDamage";
+
 export default class PlayerData
 {
-    constructor(name,gender,playerClass,race,background,magic = [],stats,currents_stats={hp:0,mana:0,experience:0}, attributes, skills, spells, inventory, quests, achievements,level, experience, gold,weight)
+    constructor(name,gender,playerClass,race,background,magic = [],stats,currents_stats={hp:0,mana:0,experience:0}, attributes, attributes_modifier = {strength:0,constitution:0 ,dexterity:0,intelligence:0,wisdom:0,charisma:0} ,skills, spells, inventory, quests, achievements,level, experience, gold,weight)
     {
         this.name = name;
         this.gender = gender;
@@ -13,7 +16,7 @@ export default class PlayerData
         this.stats = stats; // Stats object
         this.currents_stats = currents_stats;
         this.attributes = attributes; // Attributes object
-        this.attributes_modifier = {strength:0,constitution:0 ,dexterity:0,intelligence:0,wisdom:0,charisma:0}
+        this.attributes_modifier = attributes_modifier
         this.skills = skills; // Skills object
         this.spells = spells; // Spells object
         this.inventory = inventory; // Inventory object
@@ -37,6 +40,83 @@ export default class PlayerData
         if (value >= 16 && value <= 17) return 3;
         if (value >= 18 && value <= 20) return 4;
         return 0;
+    }
+
+    attack(target)
+    {
+        const weapon = this.inventory.equipment.right_hand;
+        if(weapon !== null)
+        {
+
+        }
+        else 
+        {
+            let roll_accuracy = Math.floor(Math.random() * 20) + 1;
+            roll_accuracy += this.attributes_modifier.dexterity;
+
+            console.log(`Roll d20: ${roll_accuracy}`);
+            console.log(`Player Accuracy: ${this.playerClass.accuracy}`);
+            if(roll_accuracy >= this.playerClass.accuracy)
+            {
+                const damage= {type: PhysicalDamage.list[1] , value: this.stats.phy_atk}
+                target.enemyData.takeDamage(damage,target.currents_stats);
+                console.log(`${this.name} attaque ${target.enemyData.name} avec ses poings et inflige ${damage.value} de dégats ${damage.type.name} ! Il reste ${target.currents_stats.hp} points de vie à ${target.enemyData.name}.`);
+            }
+            else
+            {
+                console.log(`${this.name} rate son attaque contre ${target.enemyData.name}.`);
+            }
+
+        }
+    }
+
+    takeDamage(damage)
+    {
+        console.log(damage);
+        if(damage.type instanceof PhysicalDamage)
+        {
+            this.currents_stats.hp -= damage.value - this.stats.phy_def;
+        }
+        else if(damage.type instanceof MagicalDamage)
+        {
+            this.currents_stats.hp -= damage.value - this.stats.mag_def;
+        }
+        else 
+        {
+            console.error('Unknown damage type:', damage.type);
+        }
+    }
+
+    expGain(experience)
+    {
+        this.currents_stats.experience += experience;
+        if(this.currents_stats.experience >= this.experience)
+        {
+            this.levelUp();
+        }
+        
+    }
+
+    levelUp()
+    {
+        const previousLevel = this.level;
+        this.level++;
+        
+        this.experience += Math.floor(this.experience * 0.1); // Augmente l'expérience requise pour le prochain niveau
+        this.currents_stats.experience = this.currents_stats.experience - this.experience;
+        console.log(`${this.name} a atteint le niveau ${this.level} !`);
+        console.log(`stats avant la mise à niveau:`, this.stats);
+        for (const stat in this.stats) 
+        {
+            if (stat === 'phy_def' || stat === 'mag_def') {
+                continue; // Conserve les valeurs existantes pour phy_def et mag_def
+            }
+            this.stats[stat] -= this.playerClass.stats[previousLevel - 1][stat];
+            this.stats[stat] += this.playerClass.stats[this.level - 1][stat];
+        }
+        console.log(`Nouveaux stats:`, this.stats);
+        console.log(`Nouveaux stats courants:`, this.currents_stats);
+        this.totalWeightUpdate();
     }
 
     updateStatsAttribute()
@@ -84,6 +164,59 @@ export default class PlayerData
     weightUpdate()
     {
 
+    }
+
+     toJSON() 
+     {
+        return {
+            name: this.name,
+            gender: this.gender,
+            playerClass: this.playerClass,
+            race: this.race,
+            background: this.background,
+            magic: [...this.magic],
+            stats: {...this.stats},
+            currents_stats: {...this.currents_stats},
+            attributes: {...this.attributes},
+            attributes_modifier: {...this.attributes_modifier},
+            skills: [...this.skills],
+            spells: [...this.spells],
+            inventory: {
+                equipment: {...this.inventory.equipment},
+                bag: [...this.inventory.bag]
+            },
+            quests: [...this.quests],
+            achievements: [...this.achievements],
+            level: this.level,
+            experience: this.experience,
+            gold: this.gold,
+            weight: this.weight
+        };
+    }
+
+    static fromJSON(data) 
+    {
+        return new PlayerData(
+            data.name,
+            data.gender,
+            data.playerClass,
+            data.race,
+            data.background,
+            data.magic || [],
+            data.stats,
+            data.currents_stats || {hp: 0, mana: 0, experience: 0},
+            data.attributes,
+            data.attributes_modifier || {strength: 0, constitution: 0, dexterity: 0, intelligence: 0, wisdom: 0, charisma: 0},
+            data.skills || [],
+            data.spells || [],
+            data.inventory || {equipment: {head: null, torso: null, legs: null, feet: null, right_hand: null, left_hand: null}, bag: []},
+            data.quests || [],
+            data.achievements || [],
+            data.level,
+            data.experience,
+            data.gold,
+            data.weight
+        );
     }
 
     static init(playerData)
@@ -180,8 +313,27 @@ export default class PlayerData
         {
             playerData.magic.push({magic:NonPolarisedMagic.list[0],discovered: false},{magic: NonPolarisedMagic.list[1],discovered:false})
         }
-
-        return new PlayerData(playerData.name,playerData.gender,playerData.playerClass,playerData.race,playerData.background,playerData.magic,playerData.stats,playerData.currents_stats,playerData.attributes,playerData.skills,playerData.spells,playerData.inventory,playerData.quests,playerData.achievements,playerData.level,playerData.experience,playerData.gold,playerData.weight)
+        return new PlayerData(
+            playerData.name,
+            playerData.gender,
+            playerData.playerClass,
+            playerData.race,
+            playerData.background,
+            playerData.magic,
+            playerData.stats,
+            playerData.currents_stats,
+            playerData.attributes,
+            {strength:0, constitution:0, dexterity:0, intelligence:0, wisdom:0, charisma:0},
+            playerData.skills,
+            playerData.spells,
+            playerData.inventory,
+            playerData.quests,
+            playerData.achievements,
+            playerData.level,
+            playerData.experience,
+            playerData.gold,
+            playerData.weight
+        )
     }
 }
 

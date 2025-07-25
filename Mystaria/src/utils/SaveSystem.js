@@ -1,3 +1,4 @@
+import PlayerData from "../systems/PlayerData";
 export class SaveSystem {
     static dbName = 'MystariaRPG';
     static storeName = 'gameData';
@@ -94,13 +95,20 @@ export class SaveSystem {
                 const transaction = db.transaction([this.storeName], 'readonly');
                 const store = transaction.objectStore(this.storeName);
                 
+                const handleSaveData = (save) => {
+                    if (save && save.gameData && save.gameData.playerData) {
+                        save.gameData.playerData = PlayerData.fromJSON(save.gameData.playerData);
+                    }
+                    return save;
+                };
+
                 // Si aucun saveId n'est fourni, on prend la dernière sauvegarde
                 const request = saveId 
                     ? store.get(saveId)  // Charge une sauvegarde spécifique
                     : store.getAll().onsuccess = (event) => {
                         // Trie par date et prend la plus récente
                         const saves = event.target.result;
-                        resolve(saves.sort((a, b) => b.created - a.created)[0]);
+                        resolve(handleSaveData(saves.sort((a, b) => b.created - a.created)[0]));
                     };
 
                 if(saveId) 
@@ -110,7 +118,7 @@ export class SaveSystem {
                         if (!save) {
                             console.warn(`Save with id ${saveId} not found`);
                         }
-                        resolve(save);
+                        resolve(handleSaveData(save));
                     };
                     request.onerror = () => reject(request.error);
                 }

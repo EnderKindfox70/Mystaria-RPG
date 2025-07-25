@@ -35,7 +35,6 @@ export class Game extends BaseGameScene
         collisionLayer.setCollisionByExclusion([-1]); // Exclut les tuiles vides de la collision
 
 
-        this.enemy = new Enemy(this, 346.9194173824158, 201.41941738241596, 'enemy',null,'enemy',null);
 
 
         this.cameras.main.setBounds(offsetX, offsetY, map.widthInPixels, map.heightInPixels);
@@ -46,9 +45,12 @@ export class Game extends BaseGameScene
         this.physics.world.enable(this.exitZone);
         this.physics.add.overlap(this.player,this.exitZone, () =>
         {
-            GameSession.saveData.position.x = 505;
-            GameSession.saveData.position.y = 175;
-            this.scene.start('Forest', {saveData: GameSession.getSaveData()})
+            GameSession.gameData.position.x = 505;
+            GameSession.gameData.position.y = 175;
+            // Préserve l'instance PlayerData lors du changement de scène
+            const saveData = GameSession.getSaveData();
+            saveData.gameData.playerData = GameSession.gameData.playerData;
+            this.scene.start('Forest', { saveData });
         });
     }
 

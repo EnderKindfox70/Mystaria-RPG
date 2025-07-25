@@ -12,8 +12,16 @@ export class InventoryMenu extends Scene {
     }
     create() 
     {
+        const pauseMenuScene = this.scene.get('pauseMenu');
+        if (pauseMenuScene && pauseMenuScene.scene.isActive()) 
+        {
+            console.warn('Impossible d’ouvrir l’inventaire : le menu pause est actif.');
+            this.scene.stop(); // Arrête l'interface d'inventaire si elle a été lancée par erreur
+            return;
+        }
         // Crée l'UI seulement si elle n'existe pas déjà
-        const player = this.scene.get('Game').player;
+        const player = this.scene.get(this.parentSceneKey).player;
+        console.log('Player in InventoryMenu:', player);
         const playerData = player ? player.playerData :null;
 
         if (!document.getElementById('inventory-modal')) {

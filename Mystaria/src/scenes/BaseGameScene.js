@@ -68,15 +68,13 @@ export class BaseGameScene extends Scene
         {
             this.player.update();
             GameSession.currentSaveId = this.currentSaveId
-            GameSession.saveData.position = 
+            GameSession.gameData.position = 
             {
                 x: this.player.x,
                 y: this.player.y,
                 scene: this.scene.key
             }
-            GameSession.saveData.playerData = this.player.playerData;
-            console.log(this.player.x+" "+this.player.y);
-            //console.log(GameSession.currentSaveId);
+            GameSession.gameData.playerData = this.player.playerData;
         }
 
     }
@@ -88,15 +86,15 @@ export class BaseGameScene extends Scene
         GameSession.currentSaveId = this.currentSaveId;
 
         console.log('Loading from save:', this.player);
-        if (saveData.character && saveData.character.position) 
+        if (saveData.gameData && saveData.gameData.position) 
         {
-            this.player.x = saveData.character.position.x;
-            this.player.y = saveData.character.position.y;
-            this.player.name = saveData.character.name;
-            this.player.playerData = saveData.character.playerData;
+            this.player.x = saveData.gameData.position.x;
+            this.player.y = saveData.gameData.position.y;
+            this.player.name = saveData.gameData.name;
+            this.player.playerData = saveData.gameData.playerData;
 
-            GameSession.saveData.position = { ...saveData.character.position };
-            GameSession.saveData.playerData = { ...saveData.character.playerData };
+            GameSession.gameData.position = { ...saveData.gameData.position };
+            GameSession.gameData.playerData = { ...saveData.gameData.playerData };
         }
     }
 }

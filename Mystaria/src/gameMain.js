@@ -6,10 +6,12 @@ import { Preloader } from './scenes/Preloader';
 import { CharacterCreationMenu } from './ui/CharacterCreationMenu';
 import { AUTO, DOM, Game, Physics } from 'phaser';
 import { LoadSaveMenu } from './ui/loadSaveMenu';
-import { PauseMenu } from './ui/pauseMenu';
+import { PauseMenu } from './ui/PauseMenu';
 import { InputManager } from './utils/inputManager';
 import { InventoryMenu } from './ui/InventoryMenu';
 import { Forest } from './scenes/Forest';
+import BaseBattleScene from './scenes/BaseBattleScene';
+import ForestBattleScene from './scenes/ForestBattleScene';
 
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
@@ -39,7 +41,8 @@ const config = {
         LoadSaveMenu,
         InputManager,
         InventoryMenu,
-        Forest
+        Forest,
+        ForestBattleScene
 
     ],
     physics: {

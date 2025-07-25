@@ -1,31 +1,46 @@
+import PlayerData from "../systems/PlayerData";
+
 export const GameSession = 
 {
     currentSaveId: null,
-    saveData: 
+    isSaving: false,
+    gameData: 
     {
         position: { x: 0, y: 0,scene:''},
-        playerData: {}
+        playerData: null,
+        partyMembers: [],   
+
     },
+
 
     getSaveData() 
     {
-        return {
+        const saveData = {
             id: this.currentSaveId,
-            character: 
+            gameData: 
             {
-                position: this.saveData.position,
-                playerData: this.saveData.playerData
-            }
+                position: { ...this.gameData.position },
+                playerData: this.gameData.playerData,
+                partyMembers: [...(this.gameData.partyMembers || [])]
+            },
+        };
+        // Ne convertir en JSON que si on sauvegarde réellement le jeu
+        if (this.isSaving) {
+            saveData.gameData.playerData = this.gameData.playerData.toJSON();
         }
+        return saveData;
     },
 
-    loadSaveData(newSave) 
+    loadSaveData(save) 
     {
-        this._currentSaveId = newSave.id || null;
-        this._saveData = {
-            position: { ...(newSave.character?.position || { x: 0, y: 0, scene: '' }) },
-            playerData: { ...(newSave.character?.playerData || {}) }
+        this.currentSaveId = save.id || null;
+        this.gameData = 
+        {
+            position: { ...(save.gameData?.position || { x: 0, y: 0, scene: '' }) },
+            partyMembers : []
         };
+        this.gameData.playerData = PlayerData.fromJSON(save.gameData.playerData);
+
     }
 }
 
